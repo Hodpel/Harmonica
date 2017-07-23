@@ -12,7 +12,7 @@ Install
 3. Be sure to activate the harmonica child theme, and not the harmonica parent theme.
 
 
-License
+Licenses
 -------
 harmonica WordPress Theme, Copyright (C) 2013 Hence (Han) Wijaya
 harmonica WordPress Theme is licensed under the GPL.
