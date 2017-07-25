@@ -1,0 +1,111 @@
+.comment-form .comment-form-comment textarea,
+.comment-form .form-submit input[type="submit"],
+.comment-form .comment-form-info input[type="text"],
+body {
+	background-color:#222;
+}
+
+.nav-primary a {
+	color: #ccc;
+}
+
+.harmonica-nav-menu .sub-menu li {
+    background: #222!important;
+}
+
+.harmonica-nav-menu ul a {
+    background: #222;
+	border: 1px solid #333;
+}
+
+.widget ul li,
+.widget ol li {
+    border-bottom: 1px solid #666;
+    border-top: 1px solid #666;
+}
+
+.widget .tagcloud a,
+.widget.widget_tag_cloud a,
+.wp_widget_tag_cloud a {
+	border: 1px solid #666;
+}
+
+.post .entry-title a,
+.entry-summary,
+.widget .tagcloud a,
+.widget.widget_tag_cloud a,
+.wp_widget_tag_cloud a,
+.widget-title,
+.harmonica-widget-list .title,
+.post .entry-title,
+.entry-summary,
+.entry-content {
+	color: #bcbcbc;
+}
+
+.entry-meta,
+.entry-meta a {
+	color: #bbb;
+}
+
+.entry-meta a:hover,
+.post .entry-title a:hover,
+ .post .entry-title a:focus {
+    color: #8B84A3;
+    text-decoration: none;
+}
+
+.search-form .search-submit,
+.comment-form .comment-form-comment textarea,
+.comment-form .comment-form-info input[type="text"],
+.page-numbers {
+	color:#fff
+}
+
+.comment-form .form-submit input[type="submit"] {
+	border-color: #c8c8c8;
+	color: #9e9e9e;
+}
+
+.page-numbers:hover {
+    background: #474747;
+}
+
+.page-numbers.current {
+    background-color: #8B84A3;
+    color: #fff;
+    border: none;
+}
+
+.page-numbers.dots:hover {
+	background: #222;
+}
+
+.logged-in-as {
+    color: #bbb;
+}
+
+.logged-in-as:hover {
+    color: #8B84A3;
+}
+
+.logged-in-as a {
+    color: #bbb;
+}
+
+.logged-in-as a:hover {
+    color: #8B84A3;
+}
+
+.site-footer {
+    border-top: 1px solid #333;
+}
+
+.harmonica-widget-list .post-icon {
+	background: #222;
+	border-color: #c8c8c8;
+}
+
+input[type="search"] {
+	background: #333;
+}

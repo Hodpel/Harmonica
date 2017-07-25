@@ -17,5 +17,9 @@
 </div><!-- .site-container -->
 <?php do_action( 'harmonica_after' ); ?>
 <?php wp_footer(); ?>
+<script>
+Waves.init();
+Waves.attach('.entry-summary .featured-image img' , 'waves-light waves-float');
+</script>
 </body>
 </html>

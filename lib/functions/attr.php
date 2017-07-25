@@ -71,16 +71,12 @@ function harmonica_attr( $slug, $context = '', $attributes = array() ) {
  * @return string
  */
 function harmonica_get_attr( $slug, $context = '', $attributes = array() ) {
-
 	$out    = '';
 	$attr   = apply_filters( "harmonica_attr_{$slug}", $attributes, $context );
-
 	if ( empty( $attr ) )
 		$attr['class'] = $slug;
-
 	foreach ( $attr as $name => $value )
 		$out .= !empty( $value ) ? sprintf( ' %s="%s"', esc_html( $name ), esc_attr( $value ) ) : esc_html( " {$name}" );
-
 	return trim( $out );
 }
 
@@ -95,10 +91,6 @@ function harmonica_get_attr( $slug, $context = '', $attributes = array() ) {
  * @return array
  */
 function harmonica_attr_head( $attr ) {
-
-	$attr['itemscope'] = '';
-	$attr['itemtype']  = 'http://schema.org/WebSite';
-
 	return $attr;
 }
 
@@ -111,11 +103,7 @@ function harmonica_attr_head( $attr ) {
  * @return array
  */
 function harmonica_attr_body( $attr ) {
-
 	$attr['dir']       = is_rtl() ? 'rtl' : 'ltr';
-	$attr['itemscope'] = 'itemscope';
-	$attr['itemtype']  = 'http://schema.org/WebPage';
-
 	return $attr;
 }
 
@@ -128,13 +116,9 @@ function harmonica_attr_body( $attr ) {
  * @return array
  */
 function harmonica_attr_header( $attr ) {
-
 	$attr['id']        = 'header';
 	$attr['class']     = 'site-header';
 	$attr['role']      = 'banner';
-	$attr['itemscope'] = 'itemscope';
-	$attr['itemtype']  = 'http://schema.org/WPHeader';
-
 	return $attr;
 }
 
@@ -151,9 +135,6 @@ function harmonica_attr_footer( $attr ) {
 	$attr['id']        = 'footer';
 	$attr['class']     = 'site-footer';
 	$attr['role']      = 'contentinfo';
-	$attr['itemscope'] = 'itemscope';
-	$attr['itemtype']  = 'http://schema.org/WPFooter';
-
 	return $attr;
 }
 
@@ -169,15 +150,8 @@ function harmonica_attr_content( $attr ) {
 
 	$attr['id']       = 'content';
 	$attr['role']     = 'main';
-	$attr['itemprop'] = 'mainContentOfPage';
-
 	if ( is_singular( 'post' ) || is_home() || is_archive() ) {
-		$attr['itemscope'] = 'itemscope';
-		$attr['itemtype']  = 'http://schema.org/Blog';
-		$attr['itemprop'] = 'mainEntityOfPage';
 	} elseif ( is_search() ) {
-		$attr['itemscope'] = 'itemscope';
-		$attr['itemtype']  = 'http://schema.org/SearchResultsPage';
 	}
 
 	return $attr;
@@ -198,9 +172,6 @@ function harmonica_attr_sidebar( $attr, $context ) {
 		$attr['id'] = "sidebar-{$context}";
 
 	$attr['role']      = 'complementary';
-	$attr['itemscope'] = '';
-	$attr['itemtype']  = 'http://schema.org/WPSideBar';
-
 	return $attr;
 }
 
@@ -216,12 +187,8 @@ function harmonica_attr_sidebar( $attr, $context ) {
 function harmonica_attr_menu( $attr, $context ) {
 
 	if ( !empty( $context ) )
-		$attr['id'] = "menu-{$context}";
-
+	$attr['id'] = "menu-{$context}";
 	$attr['role']      = 'navigation';
-	$attr['itemscope'] = 'itemscope';
-	$attr['itemtype']  = 'http://schema.org/SiteNavigationElement';
-
 	return $attr;
 }
 
@@ -237,10 +204,7 @@ function harmonica_attr_menu( $attr, $context ) {
  * @return array
  */
 function harmonica_attr_site_title( $attr ) {
-
 	$attr['id']       = 'site-title';
-	$attr['itemprop'] = 'headline';
-
 	return $attr;
 }
 
@@ -254,10 +218,7 @@ function harmonica_attr_site_title( $attr ) {
  * @return array
  */
 function harmonica_attr_site_description( $attr ) {
-
 	$attr['id']       = 'site-description';
-	$attr['itemprop'] = 'description';
-
 	return $attr;
 }
 
@@ -273,11 +234,7 @@ function harmonica_attr_site_description( $attr ) {
  * @return array
  */
 function harmonica_attr_loop_meta( $attr ) {
-
 	$attr['class']     = 'loop-meta';
-	$attr['itemscope'] = 'itemscope';
-	$attr['itemtype']  = 'http://schema.org/WebPageElement';
-
 	return $attr;
 }
 
@@ -291,10 +248,7 @@ function harmonica_attr_loop_meta( $attr ) {
  * @return array
  */
 function harmonica_attr_loop_title( $attr ) {
-
 	$attr['class']     = 'loop-title';
-	$attr['itemprop']  = 'headline';
-
 	return $attr;
 }
 
@@ -308,10 +262,7 @@ function harmonica_attr_loop_title( $attr ) {
  * @return array
  */
 function harmonica_attr_loop_description( $attr ) {
-
 	$attr['class']     = 'loop-description';
-	$attr['itemprop']  = 'text';
-
 	return $attr;
 }
 
@@ -326,43 +277,13 @@ function harmonica_attr_loop_description( $attr ) {
  * @return array
  */
 function harmonica_attr_post( $attr ) {
-
 	$post = get_post();
 
 	/* Make sure we have a real post first. */
 	if ( !empty( $post ) ) {
-
 		$attr['id']        = 'post-' . get_the_ID();
 		$attr['class']     = join( ' ', get_post_class() );
-		$attr['itemscope'] = 'itemscope';
-
-		if ( 'post' === get_post_type() ) {
-
-			$attr['itemtype']  = 'http://schema.org/BlogPosting';
-			$attr['itemprop']  = 'blogPost';
-		}
-
-		elseif ( 'attachment' === get_post_type() && wp_attachment_is_image() ) {
-
-			$attr['itemtype'] = 'http://schema.org/ImageObject';
-		}
-
-		elseif ( 'attachment' === get_post_type() && harmonica_attachment_is_audio() ) {
-
-			$attr['itemtype'] = 'http://schema.org/AudioObject';
-		}
-
-		elseif ( 'attachment' === get_post_type() && harmonica_attachment_is_video() ) {
-
-			$attr['itemtype'] = 'http://schema.org/VideoObject';
-		}
-
-		else {
-			$attr['itemtype']  = 'http://schema.org/CreativeWork';
-		}
-
 	} else {
-
 		$attr['id']    = 'post-0';
 		$attr['class'] = join( ' ', get_post_class() );
 	}
@@ -379,10 +300,7 @@ function harmonica_attr_post( $attr ) {
  * @return array
  */
 function harmonica_attr_entry_title( $attr ) {
-
 	$attr['class']    = 'entry-title';
-	$attr['itemprop'] = 'headline';
-
 	return $attr;
 }
 
@@ -395,12 +313,7 @@ function harmonica_attr_entry_title( $attr ) {
  * @return array
  */
 function harmonica_attr_entry_author( $attr ) {
-
 	$attr['class']     = 'entry-author';
-	$attr['itemprop']  = 'author';
-	$attr['itemscope'] = 'itemscope';
-	$attr['itemtype']  = 'http://schema.org/Person';
-
 	return $attr;
 }
 
@@ -413,13 +326,10 @@ function harmonica_attr_entry_author( $attr ) {
  * @return array
  */
 function harmonica_attr_entry_published( $attr ) {
-
 	$attr['class']    = 'entry-time';
 	$attr['datetime'] = get_the_time( 'Y-m-d\TH:i:sP' );
-	$attr['itemprop']  = 'datePublished';
 	/* Translators: Post date/time "title" attribute. */
 	$attr['title']    = get_the_time( _x( 'l, F j, Y, g:i a', 'post time format', 'harmonica' ) );
-
 	return $attr;
 }
 
@@ -432,13 +342,7 @@ function harmonica_attr_entry_published( $attr ) {
  * @return array
  */
 function harmonica_attr_entry_content( $attr ) {
-
 	$attr['class']    = 'entry-content';	
-	if ( 'post' === get_post_type() )
-		$attr['itemprop'] = 'articleBody';
-	else
-		$attr['itemprop'] = 'text';
-
 	return $attr;
 }
 
@@ -451,10 +355,7 @@ function harmonica_attr_entry_content( $attr ) {
  * @return array
  */
 function harmonica_attr_entry_summary( $attr ) {
-
 	$attr['class']    = 'entry-summary';
-	$attr['itemprop'] = 'description';
-
 	return $attr;
 }
 
@@ -468,18 +369,9 @@ function harmonica_attr_entry_summary( $attr ) {
  * @return array
  */
 function harmonica_attr_entry_terms( $attr, $context ) {
-
 	if ( !empty( $context ) ) {
-
 		$attr['class'] = 'entry-terms ' . sanitize_html_class( $context );
-
-		if ( 'category' === $context )
-			$attr['itemprop'] = 'articleSection';
-
-		else if ( 'post_tag' === $context )
-			$attr['itemprop'] = 'keywords';
 	}
-
 	return $attr;
 }
 
@@ -496,17 +388,11 @@ function harmonica_attr_entry_terms( $attr, $context ) {
  * @return array
  */
 function harmonica_attr_comment( $attr ) {
-
 	//$attr['id']    = 'comment-' . get_comment_ID(); hence disabled
 	//$attr['class'] = join( ' ', get_comment_class() );
-
 	//if ( in_array( get_comment_type(), array( '', 'comment' ) ) ) {
 		$attr['class']     = 'comment-item';
-		//$attr['itemprop']  = 'comment';
-		$attr['itemscope'] = 'itemscope';
-		$attr['itemtype']  = 'http://schema.org/UserComments';
 	//}
-
 	return $attr;
 }
 
@@ -519,12 +405,7 @@ function harmonica_attr_comment( $attr ) {
  * @return array
  */
 function harmonica_attr_comment_author( $attr ) {
-
 	$attr['class']     = 'comment-author';
-	$attr['itemprop']  = 'creator';
-	$attr['itemscope'] = 'itemscope';
-	$attr['itemtype']  = 'http://schema.org/Person';
-
 	return $attr;
 }
 
@@ -537,14 +418,10 @@ function harmonica_attr_comment_author( $attr ) {
  * @return array
  */
 function harmonica_attr_comment_published( $attr ) {
-
 	$attr['class']    = 'comment-published';
 	$attr['datetime'] = get_comment_time( 'Y-m-d\TH:i:sP' );
-
 	/* Translators: Comment date/time "title" attribute. */
 	$attr['title']    = get_comment_time( _x( 'l, F j, Y, g:i a', 'comment time format', 'harmonica' ) );
-	$attr['itemprop'] = 'commentTime';
-
 	return $attr;
 }
 
@@ -560,8 +437,6 @@ function harmonica_attr_comment_permalink( $attr ) {
 
 	$attr['class']    = 'comment-permalink';
 	$attr['href']     = get_comment_link();
-	$attr['itemprop'] = 'url';
-
 	return $attr;
 }
 
@@ -574,9 +449,7 @@ function harmonica_attr_comment_permalink( $attr ) {
  * @return array
  */
 function harmonica_attr_comment_content( $attr ) {
-
 	$attr['class']    = 'comment-content';
 	$attr['itemprop'] = 'commentText';
-
 	return $attr;
 }

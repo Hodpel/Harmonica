@@ -23,7 +23,55 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 if ( is_singular( 'page' ) &&  !get_theme_mod( 'page_comment' ) )
 	return;
 ?>
+<?php  include(TEMPLATEPATH . '/lib/widgets/smiley.php'); ?>
+<?php $comments_args = array(
+	
+	'title_reply' =>
+		_('Leave a Reply'),
+		
+	'title_reply_to' =>
+		_('Leave a Reply to'),
+
+	'comment_notes_before' => 
+		'',
+		
+	'comment_notes_after' =>
+		'',
+
+	'comment_field' => 
+		'<p class="comment-form-comment"><textarea placeholder="Type in your comments ..." id="comment" name="comment" cols="45" rows="6" required></textarea>
+		</p><div class="smilies">插入表情</div>',
+	
+	'fields' => apply_filters( 'comment_form_default_fields', array(
+	
+		'author' =>
+			'<div class="comment-form-info"><p class="comment-form-author">
+				<input placeholder="Your Name" id="author" name="author" type="text" value="' . esc_attr( $commenter['comment_author'] ) . '" size="30" />
+			</p>',
+		
+		'email' =>
+			'<p class="comment-form-email">
+				<input placeholder="Your Email Address" id="email" name="email" type="text" value="' . esc_attr(  $commenter['comment_author_email'] ) . '" size="30" />
+			</p>',
+		
+		'url' =>
+			'<p class="comment-form-url">
+				<input placeholder="Your Site" id="url" name="url" type="text" value="' . esc_attr( $commenter['comment_author_url'] ) . '" size="30" />
+			</p></div>')
+	),
+);
+
+if ( comments_open() ) { echo '<div class="respond-container">'; }
+comment_form($comments_args);
+if ( comments_open() ) { echo '</div> <!-- /respond-container -->'; }
+
+?>
 <div id="comments" class="entry-comments">
 	<?php get_template_part( 'partials/comments-loop' ); // Loads the comments-loop.php template. ?>
 </div><!-- #comments -->
-<?php comment_form(); ?>
+
+<?php if ( ! comments_open() && ! is_page() ) : ?>
+
+	<p class="no-comments"><span class="fa fw fa-times"></span><?php _e( 'Comments are Closed', 'rowling' ); ?></p>
+	
+<?php endif; ?>

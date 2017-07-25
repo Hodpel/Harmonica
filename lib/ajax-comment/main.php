@@ -46,24 +46,23 @@ if(!function_exists('fa_ajax_comment_callback')) :
         do_action('set_comment_cookies', $comment, $user);
         $GLOBALS['comment'] = $comment; //根据你的评论结构自行修改，如使用默认主题则无需修改
         ?>
-        <li <?php comment_class(); ?>>
-            <article class="comment-body">
-                <footer class="comment-meta">
-                    <div class="comment-author vcard">
-                        <?php echo get_avatar( $comment, $size = '56')?>
-                        <b class="fn">
-                            <?php echo get_comment_author_link();?>
-                        </b>
-                    </div>
-                    <div class="comment-metadata">
-                        <?php echo get_comment_date(); ?>
-                    </div>
-                </footer>
-                <div class="comment-content">
-                    <?php comment_text(); ?>
-                </div>
-            </article>
-        </li>
+<li class="comment even thread-odd thread-alt depth-1" id="comment-276">
+		<article class="comment-item" itemscope="itemscope" itemtype="http://schema.org/UserComments">
+	<p class="comment-author" itemprop="creator" itemscope="itemscope" itemtype="http://schema.org/Person">
+		<?php echo get_avatar( $comment, $size = '56')?>
+		<cite class="fn"><?php echo get_comment_author_link();?></cite>
+	</p>
+	<p class="comment-meta"> 
+		<time class="comment-published" datetime="<?php echo get_comment_time( 'Y-m-d\TH:i:sP' ); ?>" title="<?php echo get_comment_time( 'Y-m-d\TH:i:sP' ); ?>" itemprop="commentTime"><a href="comment-link"><?php echo get_comment_time( 'Y-m-d\TH:i:sP' ); ?></a></time>
+	</p>
+	<div class="comment-content">
+		<p><?php comment_text(); ?></p>
+	</div><!-- .comment-content -->
+	<div class="reply">
+		<i class="fa fa-reply" aria-hidden="true"></i><a itemprop="replyToUrl" rel="nofollow" class="comment-reply-link" href="reply" onclick="return addComment.moveForm( &quot;comment-232&quot;, &quot;232&quot;, &quot;respond&quot;, &quot;714&quot; )" aria-label="回复给name">回复</a>
+	</div>
+</article>
+</li>
         <?php die();
     }
 

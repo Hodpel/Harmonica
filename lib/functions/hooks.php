@@ -167,7 +167,7 @@ function harmonica_get_primary_menu() {
  * print menu icon
  */
 function harmonica_menu_icon() {
-	echo '<a href="#" id="menu-icon" class="menu-icon"><span></span></a>';
+	echo '<a href="#" id="menu-icon" class="menu-icon"><i class="fa fa-bars" aria-hidden="true" style=""></i></a>';
 }
 
 /**
@@ -253,7 +253,11 @@ function harmonica_content_nav() {
 	if ( is_single() && get_theme_mod( 'single_nav', 0 ) ) : // navigation links for single posts 
 		get_template_part( 'partials/single', 'nav' );
    	elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages 
-		loop_pagination();
+		the_posts_pagination( array(
+			'prev_text' =>  '',
+			'next_text' => '' ,
+			'before_page_number' => '',
+		));
 	endif; 
 	?>
 
