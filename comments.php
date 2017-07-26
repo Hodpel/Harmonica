@@ -36,11 +36,11 @@ if ( is_singular( 'page' ) &&  !get_theme_mod( 'page_comment' ) )
 		'',
 		
 	'comment_notes_after' =>
-		'',
+		'<div class="comment-form-nav"><div class="OwO"></div><div class="comment-form-labels"></div></div>
+		',
 
 	'comment_field' => 
-		'<p class="comment-form-comment"><textarea placeholder="Type in your comments ..." id="comment" name="comment" cols="45" rows="6" required></textarea>
-		</p><div class="smilies">插入表情</div>',
+		'<p class="comment-form-comment"><textarea class="commenttextarea" placeholder="Type in your comments ..." id="comment" name="comment" cols="45" rows="6" required></textarea></p>',
 	
 	'fields' => apply_filters( 'comment_form_default_fields', array(
 	

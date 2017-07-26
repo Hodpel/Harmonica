@@ -20,6 +20,18 @@
 <script>
 Waves.init();
 Waves.attach('.entry-summary .featured-image img' , 'waves-light waves-float');
+$(".smilies").click(function(){
+  $("p").slideToggle();
+});
+var OwO_demo = new OwO ({
+    logo: 'OωO',
+    container: document.getElementsByClassName('OwO')[0],
+    target: document.getElementsByClassName('commenttextarea')[0],
+	api: 'http://127.0.0.1/wp-content/themes/harmonica/lib/widgets/OwO.json',
+    position: 'down',
+    width: '400px',
+    maxHeight: '250px'
+});
 </script>
 </body>
 </html>
