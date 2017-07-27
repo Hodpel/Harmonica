@@ -1,157 +1,35 @@
 {
-	"Emoji": {
-        "type": "emoji",
-        "container": [
-            {
-                "icon": "😂",
-                "text": ""
-            },
-            {
-                "icon": "😀",
-                "text": ""
-            },
-            {
-                "icon": "😅",
-                "text": ""
-            },
-            {
-                "icon": "😊",
-                "text": ""
-            },
-            {
-                "icon": "🙂",
-                "text": ""
-            },
-            {
-                "icon": "🙃",
-                "text": ""
-            },
-            {
-                "icon": "😌",
-                "text": ""
-            },
-            {
-                "icon": "😍",
-                "text": ""
-            },
-            {
-                "icon": "😘 ",
-                "text": ""
-            },
-            {
-                "icon": "😜",
-                "text": ""
-            },
-            {
-                "icon": "😝",
-                "text": ""
-            },
-            {
-                "icon": "😏",
-                "text": ""
-            },
-            {
-                "icon": "😒",
-                "text": ""
-            },
-            {
-                "icon": "🙄",
-                "text": ""
-            },
-            {
-                "icon": "😳 ",
-                "text": ""
-            },
-            {
-                "icon": "😡",
-                "text": ""
-            },
-            {
-                "icon": "😔",
-                "text": ""
-            },
-            {
-                "icon": "😫",
-                "text": ""
-            },
-            {
-                "icon": "😱",
-                "text": ""
-            },
-            {
-                "icon": "😭",
-                "text": ""
-            },
-            {
-                "icon": "💩",
-                "text": ""
-            },
-            {
-                "icon": "👻",
-                "text": ""
-            },
-            {
-                "icon": "🙌",
-                "text": ""
-            },
-            {
-                "icon": "🖕",
-                "text": ""
-            },
-            {
-                "icon": "👍",
-                "text": ""
-            },
-            {
-                "icon": "👫",
-                "text": ""
-            },
-            {
-                "icon": "👬",
-                "text": ""
-            },
-            {
-                "icon": "👭",
-                "text": ""
-            },
-            {
-                "icon": "🌚",
-                "text": ""
-            },
-            {
-                "icon": "🌝",
-                "text": ""
-            },
-            {
-                "icon": "🙈",
-                "text": ""
-            },
-            {
-                "icon": "💊",
-                "text": ""
-            },
-            {
-                "icon": "😶",
-                "text": ""
-            },
-            {
-                "icon": "🙏",
-                "text": ""
-            },
-            {
-                "icon": "🍦",
-                "text": ""
-            },
-            {
-                "icon": "🍉",
-                "text": ""
-            },
-            {
-                "icon": "😣",
-                "text": ""
-            }
-        ]
-    },
+  "Emoji": {
+    "type": "smiles",
+    "baseURL": "{SMILES_EMOJI_PATH}",
+    "suffix": ".png",
+    "input": " #({NAME}) ",
+    "imgClass": "wp-smiley",
+    "container": [
+"afraid",		"ahh",		"alian",		"angel",		"angelman",
+"angry",		"arrogant",		"arrow",		"badman",		"biggrin",	
+"biggrin",		"bigsmalleyes",		"bigsmile",		"boom",		"bowknot",
+"bye",		"cake",		"catarrow",		"catgrin",		"cathappy",
+"catlol",		"catrazz",		"catrolleyes",		"catserious",		"catsurprised",
+"cattear",		"clown",		"confuse",		"confused",		"cool",
+"cough",		"covermouthlaugh",		"cowboy",		"cry",		"despise",
+"determination",		"dissatisfied",		"drool",		"eek",		"eh",
+"embarrassed",		"evil",		"exclaim",		"flirt",		"ghost",
+"gift",		"grin",		"happy",		"happykiss",		"headache",
+"hu",		"hum",		"hunger",		"icecream",		"idea",
+"ill",		"kiss",		"laughdown",		"laughing",		"lie",
+"lol",		"mad",		"money",		"monkeyshut",		"mrgreen",
+"naughty",		"nervous",		"neutral",		"no",		"odd",
+"oh",		"perspire",		"pokerfaced",		"question",		"quiteafraid",
+"quitesad",		"razz",		"redface",		"robot",		"rolleyes",
+"sad",		"saisfied",		"salvo",		"scared",		"search",
+"serious",		"shh",		"shit",		"skeleton",		"smile",
+"sneeze",		"snivel",		"sour",		"speechless",		"star",
+"stare",		"stupid",		"surprised",		"tear",		"tongue",
+"tonuge",		"twisted",		"unconfortable",		"unhappy",		"verysad",
+"vomit",		"warm",		"wink",		"yama",		"zipper",		"zzz"
+    ]
+  },
     "颜文字": {
         "type": "emoticon",
         "container": [
@@ -261,6 +139,10 @@
                 },
                 {
                     "icon": "( ๑´•ω•) \"(ㆆᴗㆆ)",
+                    "text": ""
+                },
+                {
+                    "icon": "(｡•ˇ‸ˇ•｡)",
                     "text": ""
                 }
         ]

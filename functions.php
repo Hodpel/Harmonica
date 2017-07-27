@@ -84,6 +84,7 @@ wp_enqueue_style( 'harmonica-fontawesome', get_theme_file_uri( '/lib/css/font-aw
  
 // Add theme widgets
 require_once (get_template_directory() . "/lib/widgets/recent-comments.php");
+require_once (get_template_directory() . "/lib/widgets/sidebar-links.php");
 //Add waves
   function add_waves() {
         wp_register_style(
@@ -278,46 +279,11 @@ add_filter("mce_buttons", "add_mce_buttons_1");
 add_filter("mce_buttons_2", "add_mce_buttons_2");
 
  /**
- * Comment on face
+ * Smilies
  *
  * @since Harmonica 1.0
  */
-add_filter('smilies_src','custom_smilies_src',1,10);
-function custom_smilies_src ($img_src, $img, $siteurl){
-    return get_bloginfo('template_directory').'/images/smilies/'.$img;
-}
-function disable_emojis_tinymce( $plugins ) {
-    return array_diff( $plugins, array( 'wpemoji' ) );
-}
-function smilies_reset() {
-    global $wpsmiliestrans, $wp_smiliessearch, $wp_version;
-    if ( !get_option( 'use_smilies' ) || $wp_version < 4.2)
-        return;
-    $wpsmiliestrans = array(
-    ':mrgreen:' => 'icon_mrgreen.png',
-    ':exclaim:' => 'icon_exclaim.png',
-    ':neutral:' => 'icon_neutral.png',
-    ':twisted:' => 'icon_twisted.png',
-      ':arrow:' => 'icon_arrow.png',
-        ':eek:' => 'icon_eek.png',
-      ':smile:' => 'icon_smile.png',
-   ':confused:' => 'icon_confused.png',
-       ':cool:' => 'icon_cool.png',
-       ':evil:' => 'icon_evil.png',
-    ':biggrin:' => 'icon_biggrin.png',
-       ':idea:' => 'icon_idea.png',
-    ':redface:' => 'icon_redface.png',
-       ':razz:' => 'icon_razz.png',
-   ':rolleyes:' => 'icon_rolleyes.png',
-       ':wink:' => 'icon_wink.png',
-        ':cry:' => 'icon_cry.png',
-  ':surprised:' => 'icon_surprised.png',
-        ':lol:' => 'icon_lol.png',
-        ':mad:' => 'icon_mad.png',
-        ':sad:' => 'icon_sad.png',
-    );
-}
-smilies_reset();
+require_once (get_template_directory() . "/lib/widgets/smilies.php");
 
  /**
  * OwO
@@ -337,3 +303,10 @@ smilies_reset();
         wp_enqueue_script('OwOJS');
     }
 add_action('wp_enqueue_scripts', 'add_owo');
+
+ /**
+ * Email
+ *
+ * @since Harmonica 1.0
+ */
+require_once (get_template_directory() . "/lib/widgets/emails.php");

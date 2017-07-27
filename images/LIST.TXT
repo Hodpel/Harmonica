@@ -110,5 +110,3 @@ icon_wink.png
 icon_yama.png
 icon_zipper.png
 icon_zzz.png
-LIST.TXT
-新建文本文档.bat

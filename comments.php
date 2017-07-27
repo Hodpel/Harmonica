@@ -23,7 +23,6 @@ if ( post_password_required() || ( !have_comments() && !comments_open() && !ping
 if ( is_singular( 'page' ) &&  !get_theme_mod( 'page_comment' ) )
 	return;
 ?>
-<?php  include(TEMPLATEPATH . '/lib/widgets/smiley.php'); ?>
 <?php $comments_args = array(
 	
 	'title_reply' =>

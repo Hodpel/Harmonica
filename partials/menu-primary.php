@@ -9,4 +9,5 @@
 		)); 
 	do_action( 'harmonica_after_primary_menu' );
 	?>
+	<div class="back-to-top waves-effect"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
 </nav><!-- .nav-primary -->
