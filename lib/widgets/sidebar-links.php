@@ -7,34 +7,36 @@ class harmonica_sidebar_links extends WP_Widget {
         parent::__construct( 'widget_harmonica_sidebar_links', __('Sidebar Links','harmonica'), $widget_ops );
     }
 	
-	function widget($args, $instance) {
+	function widget($args, $cnstance) {
 	
 		// Outputs the content of the widget
 		extract($args); // Make before_widget, etc available.
 		
 		$widget_title = null; 
 		
-		$widget_title = esc_attr(apply_filters('widget_title', $instance['widget_title']));
+		$widget_title = esc_attr(apply_filters(__( 'widget_title'), $cnstance[__('widget_title')]));
 		
 		echo $before_widget;
 		
 		if (!empty($widget_title)) {
-		
 			echo $before_title . $widget_title . $after_title;
-			
-		} ?>
+		}
+		else {
+			echo $before_title . __('Links') . $after_title;
+		}
+			?>
 			<div class="harmonica-links">
 				<?php 
 					$page_id = get_page_id(links);
 					$page_data = get_page($page_id);
-					$iontent = apply_filters('the_content', $page_data->post_content);					
-			        preg_match_all("/\[\+(.*)\+\]/", $iontent, $name);
-					preg_match_all("/\{\+(.*)\+\}/", $iontent, $link);
+					$content = apply_filters('the_content', $page_data->post_content);					
+			        preg_match_all("/\[\+(.*)\+\]/", $content, $name);
+					preg_match_all("/\{\+(.*)\+\}/", $content, $link);
 				    $o = 0;
+					$n1 = count($name[0]);
 					for ($i = 0; $i < $n1; $i++) {
-						$sidebar_links = $sidebar_links . '<a href="' . $link[1][$i] . '" class="tag-cloud-link tag-link-' . ++$o . ' tag-link-position-' . $o . '">' . $name[1][$i] . '</a>';
+						$sidebar_links = $sidebar_links . '<a href="' . $link[1][$i] . '" target="_blank" class="sidebar-links sidebar-link-' . ++$o . ' sidebar-link-position-' . $o . '">' . $name[1][$i] . '</a>';
 					};
-					$html = $html . "</div>";
 					echo $sidebar_links;
 				?>
 			</div>
@@ -44,21 +46,21 @@ class harmonica_sidebar_links extends WP_Widget {
 	
 	
 	function update($new_instance, $old_instance) {
-		$instance = $old_instance;
+		$cnstance = $old_instance;
 		
-		$instance['widget_title'] = strip_tags( $new_instance['widget_title'] );
+		$cnstance['widget_title'] = strip_tags( $new_instance['widget_title'] );
 		//update and save the widget
-		return $instance;
+		return $cnstance;
 		
 	}
 	
-	function form($instance) {
+	function form($cnstance) {
 		
 		// Set defaults
-		if(!isset($instance["widget_title"])) { $instance["widget_title"] = ''; }
+		if(!isset($cnstance["widget_title"])) { $cnstance["widget_title"] = ''; }
 	
 		// Get the options into variables, escaping html characters on the way
-		$widget_title = esc_attr($instance['widget_title']);
+		$widget_title = esc_attr($cnstance['widget_title']);
 		?>
 		
 		<p>

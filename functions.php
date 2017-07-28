@@ -295,11 +295,13 @@ require_once (get_template_directory() . "/lib/widgets/smilies.php");
 		'OwOCSS', 
 		get_stylesheet_directory_uri() . '/lib/css/OwO.min.css'
          );
+        wp_enqueue_style('OwOCSS');
+		if(!is_home()) {
           wp_register_script(
 		'OwOJS',
 		get_stylesheet_directory_uri() . '/lib/js/OwO.js'
          );
-        wp_enqueue_style('OwOCSS');
+		}
         wp_enqueue_script('OwOJS');
     }
 add_action('wp_enqueue_scripts', 'add_owo');
@@ -310,3 +312,31 @@ add_action('wp_enqueue_scripts', 'add_owo');
  * @since Harmonica 1.0
  */
 require_once (get_template_directory() . "/lib/widgets/emails.php");
+
+ /**
+ * Upvote
+ *
+ * @since Harmonica 1.0
+ */
+
+add_action('wp_ajax_nopriv_upvote', 'upvote');
+add_action('wp_ajax_upvote', 'upvote');
+function upvote(){
+    global $wpdb,$post;
+    $id = $_POST["um_id"];
+    $action = $_POST["um_action"];
+    if ( $action == 'ding'){
+        $specs_raters = get_post_meta($id,'upvote',true);
+        $expire = time() + 99999999;
+        $domain = ($_SERVER['HTTP_HOST'] != 'localhost') ? $_SERVER['HTTP_HOST'] : false; // make cookies work with localhost
+        setcookie('upvote_'.$id,$id,$expire,'/',$domain,false);
+        if (!$specs_raters || !is_numeric($specs_raters)) {
+            update_post_meta($id, 'upvote', 1);
+        } 
+        else {
+            update_post_meta($id, 'upvote', ($specs_raters + 1));
+        }
+        echo get_post_meta($id,'upvote',true);
+    } 
+    die;
+}

@@ -1,8 +1,8 @@
 /*
 Theme Name: harmonica
-Theme URI: https://themehall.com/harmonica
-Author: ThemeHall
-Author URI: https://themehall.com
+Theme URI: http://www.hodpel.ml/harmonica
+Author: Hodpel
+Author URI: https://www.hodpel.ml
 Description: harmonica theme is a responsive WordPress theme framework, serving as a robust WordPress Parent Theme. harmonica theme supports HTML5 and schema.org code, the semantic foundation for SEO best practices. harmonica theme is designed to be simple, yet powerful, flexible to create any site you want via harmonica child theme. The framework allows theme designers to build child themes quickly without having to code complex functionality for features. harmonica framework does these things for theme developers / designers to enable them get back to what matters the most: save time designing and developing beautiful WordPress theme. WordPress child theme handle all the markup, style, and scripts while the framework handles the logic. Simplify your website with harmonica theme for WordPress
 Version: 1.3.0
 License: GNU General Public License
@@ -568,11 +568,11 @@ Structure and Layout
 }
 
 .avatar:hover {
-	transform: rotate(-180deg);
-	-ms-transform: rotate(-180deg);
-	-moz-transform: rotate(-180deg);
-	-webkit-transform: rotate(-180deg);
-	-o-transform: rotate(-180deg);
+	transform: rotate(-360deg);
+	-ms-transform: rotate(-360deg);
+	-moz-transform: rotate(-360deg);
+	-webkit-transform: rotate(-360deg);
+	-o-transform: rotate(-360deg);
 }
 
 .alignleft .avatar {
@@ -712,10 +712,14 @@ img.alignright,
 
 .widget_calendar th {
 	text-align: center;
-	font-weight: bold;
 }
 .widget_calendar td {
 	text-align: center;
+}
+
+.widget_calendar td#today {
+    color: #8B84A3;
+    background: rgba(139,132,163,0.2);
 }
 
 input.search-field {
@@ -1274,11 +1278,13 @@ Sidebars
 ---------------------------------------------------------------------------------------------------- */
 
 .sidebar {
+	display: grid;
 }
 
 .widget-title {
 	word-wrap: break-word;
 	font-size: 15px;
+	font-weight: bold;
 }
 
 .sidebar ul,
@@ -1330,6 +1336,15 @@ Sidebars
 	height: 24px;
 	top: -2px;
 	width: 24px;
+}
+
+/* MP3Player */
+.mejs-container, .mejs-container .mejs-controls, .mejs-embed, .mejs-embed body {
+    background: #ada8be!important;
+}
+
+.mejs-controls .mejs-time-rail .mejs-time-current {
+    background: #8b84a3!important;
 }
 
 /*
@@ -1637,14 +1652,32 @@ Widget
 
 .widget ul li,
 .widget ol li {
-	border-bottom: 1px solid #ddd;
-	border-top: 1px solid #ddd;
-	padding: 0.5em 0;
-	height: 70px;
+	border-bottom: 1px solid #cdc9d7;
+	border-top: 1px solid #cdc9d7;
+	padding: 0.6em 0;
+    height: auto;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
 	}
+	
+/*.widget ul li:hover {
+	animation: myown 0.3s ease-in forwards;
+}
+
+@keyframes myown {
+	0%{background:transparent;}
+	10%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 20%);}
+	20%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 40%);}
+	30%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 60%);}
+	40%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 80%);}
+	50%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 100%);}
+	60%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 120%);}
+	70%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 140%);}
+	80%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 160%);}
+	90%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 180%);}
+	100%{background: -webkit-linear-gradient(left, rgba(139,132,163,0.2),transparent 200%);}
+}*/
 
 .widget ul li + li {
 	margin-top: -1px;
@@ -1662,7 +1695,12 @@ Widget
 	padding-left: 1.5rem;
 }
 
-.widget .tagcloud a, .widget.widget_tag_cloud a, .wp_widget_tag_cloud a {
+.widget ul li li:before {
+	content: '└';
+}
+
+.widget .tagcloud a, .widget.widget_tag_cloud a, .wp_widget_tag_cloud a,
+.widget .harmonica-links a, .widget.widget_harmonica_sidebar_links a, .widget_harmonica_sidebar_links a {
 	border: 1px solid #ddd;
 	-webkit-box-shadow: none;
 	box-shadow: none;
@@ -1676,14 +1714,19 @@ Widget
 	width: auto;
 	word-wrap: break-word;
 	z-index: 0;
+    border-radius: 20px;
 }
-.widget .tagcloud a:hover, .widget.widget_tag_cloud a:hover, .wp_widget_tag_cloud a:hover {
+
+.widget .tagcloud a:hover, .widget.widget_tag_cloud a:hover, .wp_widget_tag_cloud a:hover,
+.widget .harmonica-links a:hover, .widget_harmonica_sidebar_links a:hover, .widget_harmonica_sidebar_links a:hover {
 	border-color: #8B84A3;
 	-webkit-box-shadow: none;
 	box-shadow: none;
 	text-decoration: none;
 	color: #8B84A3;
 	background: rgba(139,132,163,0.2);
+	-webkit-transform: rotate(15deg);
+    box-shadow: 0 0 10px #8b84a3;
 }
 
 .harmonica-widget-list a {
@@ -1697,7 +1740,7 @@ Widget
 	width: 54px;
 	height: 54px;
 	padding: 3px;
-	background: #fff;
+	background: transparent;
 	border: 1px solid #ddd;
 	border-radius: 99px;
 	position: absolute;
@@ -1858,12 +1901,15 @@ img.wp-smiley {
 Transitions
 ---------------------------------------------------------------------------------------------------- */
 .harmonica-widget-list .post-icon img,
+.wp-smiley,
 .OwO .OwO-body .OwO-bar .OwO-packages li,
 .OwO,
 .avatar,
 .site-title,
 .entry-summary .featured-image img,
-.back-to-top {
+.back-to-top,
+.widget_media_image img,
+.post-like a {
 	transition: all 0.2s ease-in-out;
 	-moz-transition: all 0.2s ease-in-out;
 	-webkit-transition: all 0.2s ease-in-out;
@@ -1908,11 +1954,14 @@ input.search-field,
 .widget .tagcloud a,
  .widget.widget_tag_cloud a,
  .wp_widget_tag_cloud a,
+ .widget .harmonica-links a, 
+ .widget_harmonica_sidebar_links a, 
+ .widget_harmonica_sidebar_links a,
 .comment-form .form-submit input[type="submit"] {
-	transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	-moz-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	-webkit-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	-o-transition: background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	-o-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
 }
 
 .more>a {
@@ -1925,6 +1974,12 @@ input.search-field,
 /*
 Link Box
 ---------------------------------------------------------------------------------------------------- */
+
+.link-box {
+    overflow: hidden;
+    padding: 4.375rem 2.1875rem 2.1875rem;
+    margin: -3.125rem;
+}
 
 .link-box a {
 	width: calc(100% / 3 - 1.875rem);
@@ -2087,22 +2142,28 @@ Link Box
 ScrollBar
 ---------------------------------------------------------------------------------------------------- */
 
-::-webkit-scrollbar {
-	height:8px;
-	width:8px;
+::-webkit-scrollbar
+{
+    width: 6px;
+    height: 6px;
 }
-::-webkit-scrollbar-thumb {
-	-webkit-box-shadow:inset 1px 1px 0 rgba(0,0,0,.1),inset 0 -1px 0 rgba(0,0,0,.07);
-	background-clip:padding-box;
-	background-color:#808080;
-	min-height:40px;
-	padding-top:100px;
-	border-radius: 4px;
+::-webkit-scrollbar-track-piece
+{
+    background-color: #eee;
+    -webkit-border-radius: 6px;
 }
-::-webkit-scrollbar-thumb:hover, ::-webkit-scrollbar-thumb:active {
-	background-color:#B3B3B3;
+::-webkit-scrollbar-thumb:vertical
+{
+    height: 5px;
+    background-color: #999999;
+    -webkit-border-radius: 6px;
 }
-
+::-webkit-scrollbar-thumb:horizontal
+{
+    width: 5px;
+    background-color: #eee;
+    -webkit-border-radius: 6px;
+}
 /*
 Loading Animation
 ---------------------------------------------------------------------------------------------------- */
@@ -2185,4 +2246,55 @@ Loading Animation
 	top: 0;
 	background-color: rgba(255,255,255,1);
 	z-index: 9999
+}
+
+/*
+Aritcle navigation
+---------------------------------------------------------------------------------------------------- */
+
+.aritcle-nav {
+	text-align: center;
+    padding: 10px;
+	display: flex;
+}
+
+.page-nav-button a {
+    background-color: #fff;
+    border-radius: 3px;
+    color: #333;
+    padding: 10px 20px;
+    text-decoration: none;
+    outline: none;
+    border: 1px solid #ddd;
+    font-size: 15px;
+}
+
+.page-nav-button a:hover {
+    background-color: rgba(139,132,163,0.2);
+    color: #8b84a3;
+    box-shadow: 0 0 10px #8b84a3;
+    border: 1px solid #8b84a3;
+}
+
+/*Psot like*/
+
+.post-like a {
+	margin: 1em;
+}
+
+.post-like a.done {
+    background-color: rgba(139,132,163,0.2);
+    color: #8b84a3;
+    border: 1px solid #8b84a3;
+	margin: 1em;
+}
+
+/*Donate*/
+
+.donate a {
+	margin: 1em;
+}
+
+.donate img {
+	display:none;
 }

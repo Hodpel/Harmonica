@@ -29,22 +29,23 @@ Waves.attach('.entry-summary .featured-image img' , 'waves-light waves-float');
 $(".smilies").click(function(){
   $("p").slideToggle();
 });
-var OwO_demo = new OwO ({
-    logo: 'OωO',
-    container: document.getElementsByClassName('OwO')[0],
-    target: document.getElementsByClassName('commenttextarea')[0],
-	api: 'http://127.0.0.1/wp-content/themes/harmonica/lib/widgets/OwO.json',
-    position: 'down',
-    width: '400px',
-    maxHeight: '250px'
-});
-</script>
-<script type="text/javascript">
     window['LocalConst'] = {
         BASE_SCRIPT_URL: "http://127.0.0.1/wp-content/themes/harmonica/",
     };
     LocalConst.SMILES_EMOJI_PATH = 'http://127.0.0.1/wp-content/themes/harmonica/images/smilies/';
     var SMILES_EMOJI_PATH = LocalConst.SMILES_EMOJI_PATH;
+function OwOjson(){
+	var OwO_demo = new OwO ({
+	logo: "OωO",
+	container: document.getElementsByClassName("OwO")[0],
+	target: document.getElementsByClassName("commenttextarea")[0],
+	api: LocalConst.BASE_SCRIPT_URL + "/lib/widgets/OwO.json",
+	position: "down",
+	width: "400px",
+	maxHeight: "250px"
+});
+};
+OwOjson();
 $(function() {
     $(window).scroll(function() {
         if ($(window).scrollTop() > 500)
@@ -76,11 +77,38 @@ $('.menu-item').click(function() {
         $(this).addClass('current-menu-item');
     });
 $(".loadingback").css("display","block");
-$(document).getscript("<?php echo get_template_directory() . '/lib/js/OwO.js'; ?>");
+Waves.init();
+Waves.attach('.entry-summary .featured-image img' , 'waves-light waves-float');
     }).on('pjax:complete', function() {
 Prism.highlightAll();
+OwOjson();
 $(".loadingback").css("display","none");
     });
+});
+$.fn.postLike = function() {
+	if ($(this).hasClass('done')) {
+		alert('您已赞过本博客');
+		return false;
+	} else {
+		$(this).addClass('done');
+		var id = $(this).data("id"),
+		action = $(this).data('action'),
+		rateHolder = $(this).children('.count');
+		var ajax_data = {
+			action: "upvote",
+			um_id: id,
+			um_action: action
+		};
+		$.post("/wp-admin/admin-ajax.php", ajax_data,
+		function(data) {
+			$(rateHolder).html(data);
+		});
+		return false;
+	}
+};
+$(document).on("click", ".upvote",
+	function() {
+		$(this).postLike();
 });
     </script>
 </body>
