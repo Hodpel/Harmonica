@@ -1879,6 +1879,10 @@ Custom OwO
 	background:transparent!important;
 }
 
+.OwO .OwO-body {
+    top: 28px!important;
+}
+
 .OwO.OwO-open .OwO-logo,
 .OwO:hover .OwO-logo {
 	color: #8b84a3!important;
@@ -1895,80 +1899,6 @@ img.wp-smiley {
 	background: none !important;
 	padding: 0 !important;
 	max-height: none!important;
-}
-
-/*
-Transitions
----------------------------------------------------------------------------------------------------- */
-.harmonica-widget-list .post-icon img,
-.wp-smiley,
-.OwO .OwO-body .OwO-bar .OwO-packages li,
-.OwO,
-.avatar,
-.site-title,
-.entry-summary .featured-image img,
-.back-to-top,
-.widget_media_image img,
-.post-like a {
-	transition: all 0.2s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out;
-	-webkit-transition: all 0.2s ease-in-out;
-	-o-transition: all 0.2s ease-in-out;
-}
-
-a,
-.harmonica-widget-list .excerpt,
-.search-form .search-submit,
-.harmonica-widget-list .title {
-	transition: color 0.2s ease-in-out;
-	-moz-transition: color 0.2s ease-in-out;
-	-webkit-transition: color 0.2s ease-in-out;
-	-o-transition: color 0.2s ease-in-out;
-}
-
-input.search-field,
-.comment-form .comment-form-info input[type="text"],
-.comment-form .comment-form-comment textarea {
-	transition: border-color 0.2s ease-in-out;
-	-moz-transition: border-color 0.2s ease-in-out;
-	-webkit-transition: border-color 0.2s ease-in-out;
-	-o-transition: border-color 0.2s ease-in-out;
-}
-
-.page-numbers,
-.harmonica-nav-menu li,
-.harmonica-nav-menu ul a {
-	transition: background-color 0.2s ease-in-out;
-	-moz-transition: background-color 0.2s ease-in-out;
-	-webkit-transition: background-color 0.2s ease-in-out ;
-	-o-transition: background-color 0.2s ease-in-out;
-}
-
-.harmonica-nav-menu ul {
-	transition: opacity 0.4s ease-in-out;
-	-moz-transition: opacity 0.4s ease-in-out;
-	-webkit-transition: opacity 0.4s ease-in-out;
-	-o-transition: opacity 0.4s ease-in-out;
-}
-
-.widget .tagcloud a,
- .widget.widget_tag_cloud a,
- .wp_widget_tag_cloud a,
- .widget .harmonica-links a, 
- .widget_harmonica_sidebar_links a, 
- .widget_harmonica_sidebar_links a,
-.comment-form .form-submit input[type="submit"] {
-	transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	-moz-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	-webkit-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-	-o-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
-}
-
-.more>a {
-	transition: all .5s;
-	-moz-transition: all .5s;
-	-webkit-transition: all .5s;
-	-o-transition: all .5s;
 }
 
 /*
@@ -2255,21 +2185,20 @@ Aritcle navigation
 .aritcle-nav {
 	text-align: center;
     padding: 10px;
-	display: flex;
 }
 
-.page-nav-button a {
+.page-nav-button {
     background-color: #fff;
     border-radius: 3px;
     color: #333;
     padding: 10px 20px;
-    text-decoration: none;
+    text-decoration: none!important;
     outline: none;
     border: 1px solid #ddd;
     font-size: 15px;
 }
 
-.page-nav-button a:hover {
+.page-nav-button:hover {
     background-color: rgba(139,132,163,0.2);
     color: #8b84a3;
     box-shadow: 0 0 10px #8b84a3;
@@ -2278,11 +2207,11 @@ Aritcle navigation
 
 /*Psot like*/
 
-.post-like a {
+.post-like {
 	margin: 1em;
 }
 
-.post-like a.done {
+.post-like.done {
     background-color: rgba(139,132,163,0.2);
     color: #8b84a3;
     border: 1px solid #8b84a3;
@@ -2291,10 +2220,126 @@ Aritcle navigation
 
 /*Donate*/
 
-.donate a {
+.donate {
 	margin: 1em;
 }
 
-.donate img {
-	display:none;
+.donate:hover {
+	cursor: pointer;
 }
+
+.donate-img {
+	opacity: 0;
+    position: absolute;
+    margin-left: -60px;
+    margin-top: -168px;
+    border: 5px solid #f8f8f8;
+}
+
+.donate:hover .donate-img{
+	opacity: 1;
+}
+
+/*QRcode*/
+
+.qrcode {
+	margin: 1em;
+}
+
+.qrcode:hover {
+	cursor: pointer;
+}
+
+.qrcode-img {
+	opacity: 0;
+    position: absolute;
+    margin-left: -50px;
+    margin-top: -168px;
+	height: 160px;
+	width: 160px;
+    border: 5px solid #f8f8f8;
+}
+
+.qrcode:hover .qrcode-img{
+	opacity: 1;
+}
+
+
+/*
+Transitions
+---------------------------------------------------------------------------------------------------- */
+.harmonica-widget-list .post-icon img,
+.wp-smiley,
+.OwO .OwO-body .OwO-bar .OwO-packages li,
+.OwO,
+.avatar,
+.site-title,
+.entry-summary .featured-image img,
+.back-to-top,
+.widget_media_image img,
+.post-like,
+.donate,
+.donate-img,
+.qrcode,
+.qrcode-img {
+	transition: all 0.2s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out;
+	-o-transition: all 0.2s ease-in-out;
+}
+
+a,
+.harmonica-widget-list .excerpt,
+.search-form .search-submit,
+.harmonica-widget-list .title {
+	transition: color 0.2s ease-in-out;
+	-moz-transition: color 0.2s ease-in-out;
+	-webkit-transition: color 0.2s ease-in-out;
+	-o-transition: color 0.2s ease-in-out;
+}
+
+input.search-field,
+.comment-form .comment-form-info input[type="text"],
+.comment-form .comment-form-comment textarea {
+	transition: border-color 0.2s ease-in-out;
+	-moz-transition: border-color 0.2s ease-in-out;
+	-webkit-transition: border-color 0.2s ease-in-out;
+	-o-transition: border-color 0.2s ease-in-out;
+}
+
+.page-numbers,
+.harmonica-nav-menu li,
+.harmonica-nav-menu ul a {
+	transition: background-color 0.2s ease-in-out;
+	-moz-transition: background-color 0.2s ease-in-out;
+	-webkit-transition: background-color 0.2s ease-in-out ;
+	-o-transition: background-color 0.2s ease-in-out;
+}
+
+.harmonica-nav-menu ul {
+	transition: opacity 0.4s ease-in-out;
+	-moz-transition: opacity 0.4s ease-in-out;
+	-webkit-transition: opacity 0.4s ease-in-out;
+	-o-transition: opacity 0.4s ease-in-out;
+}
+
+.widget .tagcloud a,
+ .widget.widget_tag_cloud a,
+ .wp_widget_tag_cloud a,
+ .widget .harmonica-links a, 
+ .widget_harmonica_sidebar_links a, 
+ .widget_harmonica_sidebar_links a,
+.comment-form .form-submit input[type="submit"] {
+	transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	-moz-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	-webkit-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+	-o-transition: all 0.2s ease-in-out, border-color 0.2s ease-in-out, color 0.3s ease-in-out;
+}
+
+.more>a {
+	transition: all .5s;
+	-moz-transition: all .5s;
+	-webkit-transition: all .5s;
+	-o-transition: all .5s;
+}
+

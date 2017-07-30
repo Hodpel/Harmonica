@@ -110,6 +110,7 @@ $(document).on("click", ".upvote",
 	function() {
 		$(this).postLike();
 });
+
     </script>
 </body>
 </html>

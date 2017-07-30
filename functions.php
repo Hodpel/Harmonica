@@ -66,6 +66,18 @@ function harmonica_theme_setup() {
 	/* Handle content width for embeds and images. */
 	harmonica_set_content_width( 700 );
 
+	/*Add menu*/
+// 设置选项页
+function harmonica_menu()
+{
+// 在控制面板的侧边栏添加设置选项页链接
+add_theme_page(__('Harmonica Settings'), __('Harmonica Settings'), 'edit_themes', basename(__FILE__), 'harmonica_settings');
+}
+function harmonica_settings()
+{
+// 设置选项页面的主要功能
+}
+add_action('admin_menu','harmonica_menu');
 }
 
 add_action( 'after_setup_theme', 'harmonica_theme_setup' );
@@ -170,13 +182,13 @@ function prism_quick_button() {
 
 function register_button( $buttons ) {   
     array_push( $buttons, "|", "prism" ); //添加 一个按钮   
-    //array_push( $buttons, "|", "buttom" ); //添加一个buttom按钮   
+    array_push( $buttons, "|", "buttom" ); //添加一个buttom按钮   
   
     return $buttons;   
 }   
 function add_plugin( $plugin_array ) {   
    $plugin_array['prism'] = get_stylesheet_directory_uri() . '/lib/js/prism_quick_button.js'; //myadvert按钮的js路径   
-   //$plugin_array['buttom'] = get_bloginfo( 'template_url' ) . '/js/buttom.js'; //buttom按钮的js路径   
+   $plugin_array['buttom'] = get_bloginfo( 'template_url' ) . '/lib/js/prism_quick_button.js'; //buttom按钮的js路径   
    return $plugin_array;   
 }  
 

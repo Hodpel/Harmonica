@@ -1,2 +1,2 @@
-<?php previous_post_link( '<div class="nav-previous alignleft">%link</div>', '<span class="meta-nav">' . _x( '&larr;', 'Previous post link', 'harmonica' ) . '</span> %title' ); ?>
-<?php next_post_link( '<div class="nav-next alignright">%link</div>', '%title <span class="meta-nav">' . _x( '&rarr;', 'Next post link', 'harmonica' ) . '</span>' ); ?>
+<?php previous_post_link( '<div class="nav-previous alignleft">%link</div>', '<span class="meta-nav"><i class="fa fa-angle-double-left" aria-hidden="true"></i></span> %title' ); ?>
+<?php next_post_link( '<div class="nav-next alignright">%link</div>', '%title <span class="meta-nav"><i class="fa fa-angle-double-right" aria-hidden="true"></i></span>' ); ?>
