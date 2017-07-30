@@ -1,7 +1,7 @@
 <?php
 add_filter('smilies_src','custom_smilies_src',1,10);
 function custom_smilies_src ($img_src, $img, $siteurl){
-    return get_bloginfo('template_directory').'/images/smilies/'.$img;
+    return get_template_directory_uri() . '/images/smilies/'.$img;
 }
 function disable_emojis_tinymce( $plugins ) {
     return array_diff( $plugins, array( 'wpemoji' ) );

@@ -22,30 +22,28 @@
           <div></div>
         </div>
       </div>
-<script src="<?php bloginfo('template_url');?>/lib/js/jquery.pjax.js"></script>
+<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/lib/js/jquery.pjax.js"></script>
 <script>
 Waves.init();
 Waves.attach('.entry-summary .featured-image img' , 'waves-light waves-float');
-$(".smilies").click(function(){
-  $("p").slideToggle();
-});
-    window['LocalConst'] = {
-        BASE_SCRIPT_URL: "http://127.0.0.1/wp-content/themes/harmonica/",
-    };
-    LocalConst.SMILES_EMOJI_PATH = 'http://127.0.0.1/wp-content/themes/harmonica/images/smilies/';
-    var SMILES_EMOJI_PATH = LocalConst.SMILES_EMOJI_PATH;
-function OwOjson(){
-	var OwO_demo = new OwO ({
-	logo: "OωO",
-	container: document.getElementsByClassName("OwO")[0],
-	target: document.getElementsByClassName("commenttextarea")[0],
-	api: LocalConst.BASE_SCRIPT_URL + "/lib/widgets/OwO.json",
-	position: "down",
-	width: "400px",
-	maxHeight: "250px"
-});
+window['LocalConst'] = {
+    BASE_SCRIPT_URL: "<?php echo get_stylesheet_directory_uri() ?>",
 };
-OwOjson();
+LocalConst.SMILES_EMOJI_PATH = "<?php echo get_stylesheet_directory_uri() . '/images/smilies/' ?>";
+var SMILES_EMOJI_PATH = LocalConst.SMILES_EMOJI_PATH;
+var container = document.getElementsByClassName('OwO')[0];
+var target = document.getElementsByClassName('commenttextarea')[0];
+    if (container !== undefined && target !== undefined) {
+        var OwO_demo = new OwO ({
+            logo: 'OωO',
+            container: container,
+            target: target,
+            api: LocalConst.BASE_SCRIPT_URL + '/lib/widgets/OwO.json',
+            position: 'down',
+            style: '400px',
+            maxHeight: '250px'
+        });
+    };
 $(function() {
     $(window).scroll(function() {
         if ($(window).scrollTop() > 500)
@@ -80,8 +78,20 @@ $(".loadingback").css("display","block");
 Waves.init();
 Waves.attach('.entry-summary .featured-image img' , 'waves-light waves-float');
     }).on('pjax:complete', function() {
+var container = document.getElementsByClassName('OwO')[0];
+var target = document.getElementsByClassName('commenttextarea')[0];
+    if (container !== undefined && target !== undefined) {
+        var OwO_demo = new OwO ({
+            logo: 'OωO',
+            container: container,
+            target: target,
+            api: LocalConst.BASE_SCRIPT_URL + '/lib/widgets/OwO.json',
+            position: 'down',
+            style: '400px',
+            maxHeight: '250px'
+        });
+    };
 Prism.highlightAll();
-OwOjson();
 $(".loadingback").css("display","none");
     });
 });

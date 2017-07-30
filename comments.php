@@ -71,6 +71,6 @@ if ( comments_open() ) { echo '</div> <!-- /respond-container -->'; }
 
 <?php if ( ! comments_open() && ! is_page() ) : ?>
 
-	<p class="no-comments"><span class="fa fw fa-times"></span><?php _e( 'Comments are Closed', 'rowling' ); ?></p>
+	<p class="no-comments"><span class="fa fw fa-times"></span><?php _e( 'Comments are Closed', 'harmonica' ); ?></p>
 	
 <?php endif; ?>

@@ -247,9 +247,11 @@ function harmonica_content_nav() {
 	$nav_class = ( is_single() ) ? 'post-navigation' : 'paging-navigation';
 	
 	?>
-	<nav role="navigation" id="nav-below" class="navigation  <?php echo $nav_class; ?>">
 
-	<?php 
+		<?php 
+if (!is_page()) :
+	echo'<nav role="navigation" id="nav-below" class="navigation  <?php echo $nav_class; ?>">';
+
 	if ( is_single() && get_theme_mod( 'single_nav', 0 ) ) : // navigation links for single posts 
 		get_template_part( 'partials/single', 'nav' );
    	elseif ( $wp_query->max_num_pages > 1 && ( is_home() || is_archive() || is_search() ) ) : // navigation links for home, archive, and search pages 
@@ -259,9 +261,10 @@ function harmonica_content_nav() {
 			'before_page_number' => '',
 		));
 	endif; 
-	?>
+endif; 
 
-	</nav><!-- #nav-below -->
+	echo'</nav><!-- #nav-below -->';
+	?>
 	<?php
 }
 

@@ -16,7 +16,6 @@ function harmonica_theme_setup() {
 
 	/* Load harmonica functions */
 	require get_template_directory() . '/lib/functions/hooks.php';
-
 	add_theme_support( 'title-tag' ); 
 	
 	/* Load scripts. */
@@ -87,6 +86,10 @@ add_action( 'after_setup_theme', 'harmonica_theme_setup' );
 
 //Add Font Awesome
 wp_enqueue_style( 'harmonica-fontawesome', get_theme_file_uri( '/lib/css/font-awesome.css' ), array( 'harmonica-style' ), '1.0' );
+function fontawesome_admin() {
+wp_enqueue_style( 'harmonica-fontawesome-admin', get_theme_file_uri( '/lib/css/font-awesome.css' ) );
+}
+add_action( 'admin_enqueue_scripts', 'fontawesome_admin' );
 
 /**
  * Add widgets.
@@ -182,13 +185,13 @@ function prism_quick_button() {
 
 function register_button( $buttons ) {   
     array_push( $buttons, "|", "prism" ); //添加 一个按钮   
-    array_push( $buttons, "|", "buttom" ); //添加一个buttom按钮   
+    array_push( $buttons, "emoji" ); //添加一个buttom按钮   
   
     return $buttons;   
 }   
 function add_plugin( $plugin_array ) {   
-   $plugin_array['prism'] = get_stylesheet_directory_uri() . '/lib/js/prism_quick_button.js'; //myadvert按钮的js路径   
-   $plugin_array['buttom'] = get_bloginfo( 'template_url' ) . '/lib/js/prism_quick_button.js'; //buttom按钮的js路径   
+   $plugin_array['prism'] = get_stylesheet_directory_uri() . '/lib/js/prism_quick_button.js'; 
+   $plugin_array['emoji'] = get_stylesheet_directory_uri() . '/lib/js/smilies.js';
    return $plugin_array;   
 }  
 
@@ -308,12 +311,10 @@ require_once (get_template_directory() . "/lib/widgets/smilies.php");
 		get_stylesheet_directory_uri() . '/lib/css/OwO.min.css'
          );
         wp_enqueue_style('OwOCSS');
-		if(!is_home()) {
-          wp_register_script(
+        wp_register_script(
 		'OwOJS',
 		get_stylesheet_directory_uri() . '/lib/js/OwO.js'
          );
-		}
         wp_enqueue_script('OwOJS');
     }
 add_action('wp_enqueue_scripts', 'add_owo');
@@ -352,3 +353,4 @@ function upvote(){
     } 
     die;
 }
+

@@ -2,7 +2,7 @@
 define('AC_VERSION','1.0.0');
 
 if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
-	wp_die('请升级到4.4以上版本');
+	wp_die(_('Please upgrade into wordpress 4.4'));
 }
 
 if(!function_exists('fa_ajax_comment_scripts')) :
@@ -13,7 +13,7 @@ if(!function_exists('fa_ajax_comment_scripts')) :
         wp_localize_script( 'ajax-comment', 'ajaxcomment', array(
             'ajax_url'   => admin_url('admin-ajax.php'),
             'order' => get_option('comment_order'),
-            'formpostion' => 'top', //默认为bottom，如果你的表单在顶部则设置为top。
+            'formpostion' => 'top', //Default: bottom , if your form is on the top, use top.
         ) );
     }
 
@@ -44,7 +44,7 @@ if(!function_exists('fa_ajax_comment_callback')) :
         }
         $user = wp_get_current_user();
         do_action('set_comment_cookies', $comment, $user);
-        $GLOBALS['comment'] = $comment; //根据你的评论结构自行修改，如使用默认主题则无需修改
+        $GLOBALS['comment'] = $comment;
         ?>
 <li class="comment even thread-odd thread-alt depth-1" id="comment-276">
 		<article class="comment-item" itemscope="itemscope" itemtype="http://schema.org/UserComments">
@@ -59,7 +59,7 @@ if(!function_exists('fa_ajax_comment_callback')) :
 		<p><?php comment_text(); ?></p>
 	</div><!-- .comment-content -->
 	<div class="reply">
-		<i class="fa fa-reply" aria-hidden="true"></i><a itemprop="replyToUrl" rel="nofollow" class="comment-reply-link" href="reply" onclick="return addComment.moveForm( &quot;comment-232&quot;, &quot;232&quot;, &quot;respond&quot;, &quot;714&quot; )" aria-label="回复给name">回复</a>
+		<i class="fa fa-reply" aria-hidden="true"></i><a itemprop="replyToUrl" rel="nofollow" class="comment-reply-link" href="reply" onclick="return addComment.moveForm( &quot;comment-232&quot;, &quot;232&quot;, &quot;respond&quot;, &quot;714&quot; )" aria-label="<?php  echo __('Reply')?>"><?php echo __('Reply')?></a>
 	</div>
 </article>
 </li>

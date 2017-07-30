@@ -11,7 +11,7 @@ function harmonica_comment_approved($comment) {
             <div style="background:#ececec;width: 100%;padding: 50px 0;text-align:center;">
             <div style="background:#fff;width:750px;text-align:left;position:relative;margin:0 auto;font-size:14px;line-height:1.5;">
                     <div style="zoom:1;padding:25px 40px;background:#8b84a3; border-bottom:1px solid #467ec3;">
-                        <h1 style="color:#fff; font-size:25px;line-height:30px; margin:0;"><a href="' . get_option('home') . '" style="text-decoration: none;color: #FFF;">' . htmlspecialchars_decode(get_option('blogname'), ENT_QUOTES) . '</a></h1>
+                        <h1 style="color:#fff; font-size:25px;line-height:30px; margin:0;"><a href="' .  home_url() . '" style="text-decoration: none;color: #FFF;">' . htmlspecialchars_decode(get_option('blogname'), ENT_QUOTES) . '</a></h1>
                     </div>
                 <div style="padding:35px 40px 30px;">
                     <h2 style="font-size:18px;margin:5px 0;">Hi ' . trim($comment->comment_author) . ':</h2>
@@ -59,7 +59,7 @@ function comment_mail_notify($comment_id) {
             <div style="background:#ececec;width: 100%;padding: 50px 0;text-align:center;">
             <div style="background:#fff;width:750px;text-align:left;position:relative;margin:0 auto;font-size:14px;line-height:1.5;">
                     <div style="zoom:1;padding:25px 40px;background:#8b84a3; border-bottom:1px solid #467ec3;">
-                        <h1 style="color:#fff; font-size:25px;line-height:30px; margin:0;"><a href="' . get_option('home') . '" style="text-decoration: none;color: #FFF;">' . htmlspecialchars_decode(get_option('blogname'), ENT_QUOTES) . '</a></h1>
+                        <h1 style="color:#fff; font-size:25px;line-height:30px; margin:0;"><a href="' .  home_url() . '" style="text-decoration: none;color: #FFF;">' . htmlspecialchars_decode(get_option('blogname'), ENT_QUOTES) . '</a></h1>
                     </div>
                 <div style="padding:35px 40px 30px;">
                     <h2 style="font-size:18px;margin:5px 0;">Hi ' . trim(get_comment($parent_id)->comment_author) . ':</h2>
