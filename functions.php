@@ -71,9 +71,6 @@ require (get_template_directory() . "/lib/functions/harmonica-settings.php");
 
 add_action( 'after_setup_theme', 'harmonica_theme_setup' );
 
-/* Add the dark style css. */
-wp_enqueue_style( 'harmonica-colors-dark', get_theme_file_uri( '/lib/css/theme-dark.css' ), array( 'harmonica-style' ), '1.0' );
-
 //Add Font Awesome
 wp_enqueue_style( 'harmonica-fontawesome', get_theme_file_uri( '/lib/css/font-awesome.css' ), array( 'harmonica-style' ), '1.0' );
 function fontawesome_admin() {

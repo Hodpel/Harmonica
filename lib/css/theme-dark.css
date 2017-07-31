@@ -103,7 +103,7 @@ body.theme-dark a:hover {
 	color: #8b84a3;
 }
 
-::selection {
+body.theme-dark::selection {
 	background: #fff;
 	color: #fff;
 }
@@ -153,7 +153,7 @@ body.theme-dark .harmonica-nav-menu li:hover > ul {
 }
 
 body.theme-dark .back-to-top {
-    color: #333;
+    color: #ccc;
 }
 
 body.theme-dark .back-to-top:hover {
@@ -196,15 +196,15 @@ body.theme-dark .page-numbers.current {
 }
 
 body.theme-dark ul.children .depth-2 {
-	border-left: #f0f0f0 3px solid;
+	border-left: #333 3px solid;
 }
 
 body.theme-dark ul.children .depth-3 {
-	border-left: #f0f0f0 3px solid;
+	border-left: #333 3px solid;
 }
 
 body.theme-dark ul.children .depth-4 {
-	border-left: #f0f0f0 3px solid;
+	border-left: #333 3px solid;
 }
 
 body.theme-dark .comment-reply-title {
@@ -298,7 +298,7 @@ body.theme-dark ul.menu-primary a {
 }
 
 body.theme-dark ul.menu-primary a:hover {
-	color: #111;
+	color: #ccc;
 }
 
 body.theme-dark .widget ul li,
@@ -390,20 +390,32 @@ body.theme-dark .OwO .OwO-body .OwO-items .OwO-item {
     background: #343232;
 }
 
-body.theme-dark.OwO .OwO-body .OwO-bar {
+body.theme-dark .OwO .OwO-body .OwO-bar {
     width: 100%;
     height: 30px;
     border-top: 1px solid #5e5e5e;
     background: #2c2a2a;
     border-radius: 0 0 4px 4px;
-    color: #444;
+    color: #ccc;
+}
+
+body.theme-dark .OwO .OwO-body {
+    border: 1px solid #5e5e5e;
+}
+
+body.theme-dark .OwO .OwO-body .OwO-bar .OwO-packages li:hover {
+	background: rgba(255,255,255,0.12);
+}
+
+body.theme-dark .OwO .OwO-body .OwO-bar .OwO-packages .OwO-package-active {
+	background: rgba(255,255,255,0.12);
 }
 
 body.theme-dark .link-box a {
-	background: #fff;
+	background: #222;
 	color: #2e2e2e;
-	box-shadow: 0 0.0625rem 0.0625rem rgba(0,0,0,0.1);
-	-webkit-box-shadow: 0 0.0625rem 0.0625rem rgba(0,0,0,0.1);
+	box-shadow: 0 0.0625rem 0.0625rem rgba(255,255,255,0.1);
+	-webkit-box-shadow: 0 0.0625rem 0.0625rem rgba(255,255,255,0.1);
 }
 
 body.theme-dark .link-box a .thumb {
@@ -411,7 +423,7 @@ body.theme-dark .link-box a .thumb {
 }
 
 body.theme-dark .link-box a .link-content .link-title h3 {
-	color: #2e2e2e;
+	color: #aaa;
 }
 
 ::-webkit-scrollbar-track-piece
@@ -426,7 +438,7 @@ body.theme-dark .link-box a .link-content .link-title h3 {
 
 ::-webkit-scrollbar-thumb:horizontal
 {
-    background-color: #fff;
+    background-color: #222;
 }
 
 body.theme-dark .loadingback {
@@ -481,6 +493,6 @@ body.theme-dark .harmonica-nav-menu li:hover {
 }
 
 body.theme-dark .link-box a:hover {
-	box-shadow: 0 1.375rem 2.6875rem rgba(0, 0, 0, 0.15);
-	-webkit-box-shadow: 0 1.375rem 2.6875rem rgba(0, 0, 0, 0.15);
+	box-shadow: 0 1.375rem 2.6875rem rgba(255, 255, 255, 0.15);
+	-webkit-box-shadow: 0 1.375rem 2.6875rem rgba(255, 255, 255, 0.15);
 }

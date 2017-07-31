@@ -34,7 +34,16 @@ if (get_option('IfPjax')=='yes') {
 	echo 'pjax();';
 }
 if (get_option('IfAuto')=='yes') {
-	
+					echo'$(document).ready(function() {
+					var myDate = new Date();
+					var currentTime = myDate.getHours();
+					if (currentTime < 6 || currentTime > 22) {
+						$("body").addClass("theme-dark").removeClass("theme-light");
+					}
+					else{
+						$("body").addClass("theme-light").removeClass("theme-dark");
+					}
+				});';
 }
 
 ?>
