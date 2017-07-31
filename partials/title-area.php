@@ -25,7 +25,14 @@ if ( $title = get_bloginfo( 'name' ) ) {
 }
 
 /* Get the avatar.  If it's not empty, wrap it with the appropriate HTML. */
-$avatar = sprintf( '<div class="title-avatar" style=""><a href="%1$s" title="%2$s" target="_self" style="">' . get_avatar( $current_user->user_email, 100 ) . '</a></div>', home_url(), esc_attr( $avatar ));		
+if (get_option('IfAvatar')== 'yes') {
+	if(get_option('IfGravatar')== 'yes') {
+		$avatar = sprintf( '<div class="title-avatar" style=""><a href="%1$s" title="%2$s" target="_self" style="">' . get_avatar( get_option( 'admin_email') , 100 ) . '</a></div>', home_url(), esc_attr( $avatar ) );
+	}
+	else {
+		$avatar = sprintf( '<div class="title-avatar" style=""><a href="%1$s" title="%2$s" target="_self" style=""><img alt="" src="' . get_option('Avatarurl') . '" srcset="' . get_option('Avatarurl') . ' 2x" class="avatar avatar-100 photo" height="100" width="100" itemprop="image"></a></div>', home_url(), esc_attr( $avatar ) );
+	}
+}
 /* Display theavatar and apply filters for developers to overwrite. */
 echo harmonica_apply_atomic( 'title_avatar', $avatar );
 

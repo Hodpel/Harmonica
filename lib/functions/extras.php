@@ -77,7 +77,15 @@ function harmonica_body_classes( $classes ) {
 	if ( is_multi_author() ) {
 		$classes[] = 'group-blog';
 	}
-
+	//Add no-avatar
+	if (get_option('IfAvatar')=='no') {
+		$classes[] = 'no-avatar';
+	}
+	if (get_option('IfDark')=='yes') {
+		$classes[] = 'theme-light';
+	} else  {
+		$classes[] = 'theme-dark';
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'harmonica_body_classes' );
@@ -197,13 +205,8 @@ function get_the_content_limit( $max_characters, $more_link_text = '(more...)', 
 	}
 
 	//* More link?
-	if ( $more_link_text && !$no_more )  {
 		$link   = apply_filters( 'get_the_content_more_link', sprintf( '<span class="more"><a class="more-link" href="%s">%s</a></span>', get_permalink(), $more_link_text ), $more_link_text );
 		$output = sprintf( '<p>%s %s</p>', $content, $link );
-	} else {
-		$output = sprintf( '<p>%s</p>', $content );
-		$link = '';
-	}
 
 	return apply_filters( 'get_the_content_limit', $output, $content, $link, $max_characters );
 

@@ -250,7 +250,7 @@ function harmonica_content_nav() {
 
 		<?php 
 if (!is_page()) :
-	echo'<nav role="navigation" id="nav-below" class="navigation  <?php echo $nav_class; ?>">';
+	echo'<nav role="navigation" id="nav-below" class="navigation ' . $nav_class . '">';
 
 	if ( is_single() && get_theme_mod( 'single_nav', 0 ) ) : // navigation links for single posts 
 		get_template_part( 'partials/single', 'nav' );

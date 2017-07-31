@@ -66,23 +66,13 @@ function harmonica_theme_setup() {
 	harmonica_set_content_width( 700 );
 
 	/*Add menu*/
-// 设置选项页
-function harmonica_menu()
-{
-// 在控制面板的侧边栏添加设置选项页链接
-add_theme_page(__('Harmonica Settings'), __('Harmonica Settings'), 'edit_themes', basename(__FILE__), 'harmonica_settings');
-}
-function harmonica_settings()
-{
-// 设置选项页面的主要功能
-}
-add_action('admin_menu','harmonica_menu');
+require (get_template_directory() . "/lib/functions/harmonica-settings.php");
 }
 
 add_action( 'after_setup_theme', 'harmonica_theme_setup' );
 
 /* Add the dark style css. */
-//wp_enqueue_style( 'harmonica-colors-dark', get_theme_file_uri( '/lib/css/dark-style.css' ), array( 'harmonica-style' ), '1.0' );
+wp_enqueue_style( 'harmonica-colors-dark', get_theme_file_uri( '/lib/css/theme-dark.css' ), array( 'harmonica-style' ), '1.0' );
 
 //Add Font Awesome
 wp_enqueue_style( 'harmonica-fontawesome', get_theme_file_uri( '/lib/css/font-awesome.css' ), array( 'harmonica-style' ), '1.0' );
@@ -185,13 +175,13 @@ function prism_quick_button() {
 
 function register_button( $buttons ) {   
     array_push( $buttons, "|", "prism" ); //添加 一个按钮   
-    array_push( $buttons, "emoji" ); //添加一个buttom按钮   
+//    array_push( $buttons, "emoji" ); //添加一个buttom按钮   
   
     return $buttons;   
 }   
 function add_plugin( $plugin_array ) {   
    $plugin_array['prism'] = get_stylesheet_directory_uri() . '/lib/js/prism_quick_button.js'; 
-   $plugin_array['emoji'] = get_stylesheet_directory_uri() . '/lib/js/smilies.js';
+//   $plugin_array['emoji'] = get_stylesheet_directory_uri() . '/lib/js/smilies.js';
    return $plugin_array;   
 }  
 
@@ -354,3 +344,22 @@ function upvote(){
     die;
 }
 
+  function add_global() {
+        wp_register_script(
+		'GlobalJS',
+		get_stylesheet_directory_uri() . '/lib/js/global.js'
+         );
+        wp_enqueue_script('GlobalJS');
+    }
+add_action('wp_enqueue_scripts', 'add_global');
+
+if (get_option('IfPjax')=='yes') {
+  function add_pjax() {
+        wp_register_script(
+		'PJAXJS',
+		get_stylesheet_directory_uri() . '/lib/js/pjax.js'
+         );
+        wp_enqueue_script('PJAXJS');
+    }
+add_action('wp_enqueue_scripts', 'add_pjax');
+}
