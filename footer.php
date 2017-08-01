@@ -35,17 +35,18 @@ if (get_option('IfPjax')=='yes') {
 }
 if (get_option('IfAuto')=='yes') {
 					echo'$(document).ready(function() {
-					var myDate = new Date();
-					var currentTime = myDate.getHours();
-					if (currentTime < 6 || currentTime > 22) {
-						$("body").addClass("theme-dark").removeClass("theme-light");
-					}
-					else{
-						$("body").addClass("theme-light").removeClass("theme-dark");
-					}
-				});';
+							var myDate = new Date();
+							var currentTime = myDate.getHours();
+								if (currentTime <= 6 || currentTime >= 22) {
+									$("body").addClass("theme-dark ").removeClass("theme-light");
+									$(".back-to-top").addClass("waves-light");
+								}
+								else{
+									$("body").addClass("theme-light").removeClass("theme-dark");
+									$(".back-to-top").removeClass("waves-light");
+								}
+							});';
 }
-
 ?>
     </script>
 </body>

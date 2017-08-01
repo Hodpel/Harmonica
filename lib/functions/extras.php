@@ -86,6 +86,9 @@ function harmonica_body_classes( $classes ) {
 	} else  {
 		$classes[] = 'theme-dark';
 	}
+	if (!is_active_sidebar('primary')) {
+		$classes[] = 'no-sidebar';
+	}
 	return $classes;
 }
 add_filter( 'body_class', 'harmonica_body_classes' );

@@ -1,5 +1,5 @@
 <?php if ( have_comments() ) : ?>
-	<h3><?php comments_number( '', __( 'One Comment', 'harmonica' ), __( '% Comments', 'harmonica' ) ); ?></h3>
+	<p class="comment-number"><?php comments_number( '', __( 'One Comment', 'harmonica' ), __( '% Comments', 'harmonica' ) ); ?></p>
 	<ol class="comment-list">
 		<?php wp_list_comments(
 			array(
