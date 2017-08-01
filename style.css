@@ -492,7 +492,7 @@ select:hover,
 input:focus,
 textarea:focus {
 	outline: none;
-	border: 1px solid #8B84A3!important;
+	border-color: #8B84A3!important;
 }
 
 ::-moz-placeholder {
@@ -824,7 +824,6 @@ Site Header
 	margin: 50px auto;
 	top: -300px;
 	position: relative;
-	background: rgba(255,255,255,0.5);
 	box-shadow: 0 0 5px #888;
 }
 
@@ -878,7 +877,7 @@ Site Header
 	position: relative;
     height: 100px;
     width: 100px;
-	border: 7px solid rgba(255,255,255,0.3);
+	border: 7px solid;
 	box-shadow: 0 0 5px #aaa;
 }
 
@@ -886,10 +885,6 @@ Site Header
 	font-size: 45px;
 	line-height: 1;
 	margin: 0 0 10px;
-}
-
-.site-title a {
-	color: #333!important;
 }
 
 img:hover,
@@ -1197,10 +1192,6 @@ span.post_tag::before {
 	text-decoration: none;
 }
 
-.entry-comments a.url.fn.n {
-	color: #8b84a3;
-}
-
 .comment-form .comment-form-info {
 	display: flex;
 	text-align: center;
@@ -1226,8 +1217,8 @@ span.post_tag::before {
 
 .comment-form .form-submit input[type="submit"] {
 	width: 100%;
-    border-top: 1px solid #ddd!important;
-    border-bottom: 1px solid #ddd!important;
+    border-top: 1px solid!important;
+    border-bottom: 1px solid!important;
 	border-radius:0;
 }
 
@@ -1264,15 +1255,15 @@ ol.comment-list {
 	border-top: 1px solid;
 }
 
-body.theme-light ul.children .depth-2 {
+ul.children .depth-2 {
 	border-left: 3px solid;
 }
 
-body.theme-light ul.children .depth-3 {
+ul.children .depth-3 {
 	border-left: 3px solid;
 }
 
-body.theme-light ul.children .depth-4 {
+ul.children .depth-4 {
 	border-left: 3px solid;
 }
 
@@ -2259,7 +2250,7 @@ Aritcle navigation
     text-decoration: none!important;
     outline: none;
     font-size: 15px;
-    border: 1px solid #ddd;
+    border: 1px solid #5e5e5e;
 }
 
 .page-nav-button:hover {
@@ -2292,20 +2283,19 @@ Aritcle navigation
 }
 
 .donate img {
-	height: 0;
 	opacity: 0;
     position: absolute;
     margin-left: -60px;
     margin-top: -168px;
-	height: 160px;
-	width: 160px;
 	height: 0;
+	width: 0;
     border: 5px solid #f8f8f8;
 }
 
 .donate:hover img{
 	opacity: 1;
-	height: initial;
+	height: 160px;
+    width: 160px;
 }
 
 /*QRcode*/
@@ -2323,15 +2313,15 @@ Aritcle navigation
     position: absolute;
     margin-left: -50px;
     margin-top: -168px;
-	height: 160px;
-	width: 160px;
 	height: 0;
+	width: 0;
     border: 5px solid #f8f8f8;
 }
 
 .qrcode:hover img{
 	opacity: 1;
-	height: initial;
+	height: 160px;
+    width: 160px;
 }
 
 
@@ -2437,6 +2427,18 @@ body.theme-light textarea {
 	border-color: #ddd;
 }
 
+body.theme-light .site-title a {
+	color: #333!important;
+}
+
+body.theme-light .title-area {
+	background: rgba(255,255,255,0.5);
+}
+
+body.theme-light .title-avatar img {
+	border-color: rgba(255,255,255,0.3);
+}
+
 body.theme-light .nav-primary {
 	background-color: #fff;
 }
@@ -2497,6 +2499,16 @@ body.theme-light li.pingback {
 body.theme-light .comment .avatar ,
 body.theme-light .pingback .avatar{
 	border-color: #ddd;
+}
+
+body.theme-light .byuser .comment-author:after {
+	margin-left: 5px;
+    font-size: 12px;
+    color: #fff;
+    content: "博主";
+    padding: 0px 4px;
+    background: #ddd;
+    border-radius: 3px;
 }
 
 body.theme-light .search-form .search-submit {
@@ -2620,6 +2632,19 @@ body.theme-dark textarea {
 	color:#ddd;
 }
 
+body.theme-dark .site-title a {
+	color: #ccc!important;
+}
+
+body.theme-dark .title-area {
+	background: rgba(0,0,0,0.5);
+}
+
+body.theme-dark .title-avatar img {
+	border-color: rgba(0,0,0,0.3);
+    box-shadow: 0 0 5px #333;
+}
+
 body.theme-dark .nav-primary {
 	background: #222;
 }
@@ -2633,8 +2658,8 @@ body.theme-dark .entry-meta {
 }
 
 body.theme-dark .post-navigation  {
-	border-top: #5e5e5e;
-	border-bottom: #5e5e5e;
+	border-top-color: #5e5e5e;
+	border-bottom-color: #5e5e5e;
 }
 
 body.theme-dark .page-numbers {
@@ -2682,6 +2707,16 @@ body.theme-dark .pingback .avatar{
 	border-color: #5e5e5e;
 }
 
+body.theme-dark .byuser .comment-author:after {
+	margin-left: 5px;
+    font-size: 12px;
+    color: #f5f5f5;
+    content: "博主";
+    padding: 0px 4px;
+    background: #5e5e5e;
+    border-radius: 3px;
+}
+
 body.theme-dark .search-form .search-submit {
 	color:#999;
 }
@@ -2723,7 +2758,7 @@ body.theme-dark .harmonica-widget-list .post-icon {
 }
 
 body.theme-dark .harmonica-widget-list .title {
-	color: #111;
+	color: #999;
 }
 
 body.theme-dark .more>a {

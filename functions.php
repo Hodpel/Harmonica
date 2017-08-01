@@ -360,3 +360,17 @@ if (get_option('IfPjax')=='yes') {
     }
 add_action('wp_enqueue_scripts', 'add_pjax');
 }
+
+ /**
+ * At people
+ *
+ * @since Harmonica 1.0
+ */
+ 
+function harmonica_comment_add_at( $comment_text, $comment = '') { 
+  if( $comment->comment_parent > 0) { 
+    $comment_text = '<a href="#comment-' . $comment->comment_parent . '">@'.get_comment_author( $comment->comment_parent ) . '</a> ' . $comment_text; 
+  } 
+  return $comment_text; 
+} 
+add_filter( 'comment_text' , 'harmonica_comment_add_at', 20, 2);
