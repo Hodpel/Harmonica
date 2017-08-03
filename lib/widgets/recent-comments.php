@@ -64,7 +64,7 @@ class harmonica_recent_comments extends WP_Widget {
 									
 									<div class="inner">
 									
-										<p class="title"><span><?php comment_author(); echo ' to ' . get_the_title($comment->comment_post_ID); ?></span></p>
+										<p class="title"><span><?php comment_author(); ?></span><span class="title-meta"><?php the_time(); ?></span></p>
 										<p class="excerpt">"<?php echo esc_attr(get_comment_text($comment->comment_ID, 13)); ?>"</p>
 									
 									</div>

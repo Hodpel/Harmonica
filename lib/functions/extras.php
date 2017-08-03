@@ -81,7 +81,7 @@ function harmonica_body_classes( $classes ) {
 	if (get_option('IfAvatar')=='no') {
 		$classes[] = 'no-avatar';
 	}
-	if (get_option('IfDark')=='yes') {
+	if (get_option('IfDark')=='no') {
 		$classes[] = 'theme-light';
 	} else  {
 		$classes[] = 'theme-dark';

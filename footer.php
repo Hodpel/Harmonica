@@ -17,11 +17,21 @@
 </div><!-- .site-container -->
 <?php do_action( 'harmonica_after' ); ?>
 <?php wp_footer(); ?>
-<div class="loadingback"> <div class="loader">
-        <div class="loader-inner square-spin">
-          <div></div>
-        </div>
-      </div>
+<div class="loadingback">
+<div id="loading">
+<div id="loading-center">
+<div id="loading-center-absolute">
+<div class="object" id="object_four"></div>
+<div class="object" id="object_three"></div>
+<div class="object" id="object_two"></div>
+<div class="object" id="object_one"></div>
+
+</div>
+</div>
+ 
+</div>
+</div>
+<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/lib/js/jquery.pjax.js"></script>
 <script>
 window['LocalConst'] = {
@@ -37,7 +47,7 @@ if (get_option('IfAuto')=='yes') {
 					echo'$(document).ready(function() {
 							var myDate = new Date();
 							var currentTime = myDate.getHours();
-								if (currentTime <= 6 || currentTime >= 22) {
+								if (currentTime <= 6 || currentTime >= 20) {
 									$("body").addClass("theme-dark ").removeClass("theme-light");
 									$(".back-to-top").addClass("waves-light");
 								}
@@ -47,7 +57,13 @@ if (get_option('IfAuto')=='yes') {
 								}
 							});';
 }
+if (get_option('IfDark')=='yes') {
+					echo'$(".back-to-top").addClass("waves-light");';
+}
 ?>
+if (screen.width <= 1024) {
+	$(".back-to-top").removeClass("waves-effect");
+}
     </script>
 </body>
 </html>

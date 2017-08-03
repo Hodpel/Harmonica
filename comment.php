@@ -16,7 +16,7 @@
 			<?php printf( __( '<cite class="fn">%s</cite>', 'harmonica' ), get_comment_author_link() ); ?>
 		</p>
 		<p class="comment-meta"> 
-			<time <?php harmonica_attr( 'comment-published' ); ?>><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><?php printf( __( '%1$s at %2$s', 'harmonica' ), get_comment_date(), get_comment_time() ); ?></a></time>
+			<time <?php harmonica_attr( 'comment-published' ); ?>><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><?php printf( __( '%1$s', 'harmonica' ), the_time() ); ?></a></time>
 			<?php edit_comment_link( __( '(Edit)', 'harmonica' ), '' ); ?>
 		</p>
 		<div class="comment-content">

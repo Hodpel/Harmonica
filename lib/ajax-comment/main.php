@@ -53,7 +53,7 @@ if(!function_exists('fa_ajax_comment_callback')) :
 		<cite class="fn"><?php echo get_comment_author_link();?></cite>
 	</p>
 	<p class="comment-meta"> 
-		<time class="comment-published" datetime="<?php echo get_comment_time( 'Y-m-d\TH:i:sP' ); ?>" title="<?php echo get_comment_time( 'Y-m-d\TH:i:sP' ); ?>" itemprop="commentTime"><a href="comment-link"><?php echo get_comment_time( 'Y-m-d\TH:i:sP' ); ?></a></time>
+		<time class="comment-published" datetime="<?php echo the_time(); ?>" title="<?php echo the_time(); ?>" itemprop="commentTime"><a href="comment-link"><?php echo the_time(); ?></a></time>
 	</p>
 	<div class="comment-content">
 		<p><?php comment_text(); ?></p>

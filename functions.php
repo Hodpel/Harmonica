@@ -1,4 +1,6 @@
 <?php
+/*Timezone set*/
+date_default_timezone_set(PRC);
 /* Load harmonica theme framework. */
 require ( trailingslashit( get_template_directory() ) . 'lib/framework.php' );
 new harmonica();
@@ -374,3 +376,45 @@ function harmonica_comment_add_at( $comment_text, $comment = '') {
   return $comment_text; 
 } 
 add_filter( 'comment_text' , 'harmonica_comment_add_at', 20, 2);
+
+ /**
+ * Comment time set
+ *
+ * @since Harmonica 1.0
+ */
+ 
+add_filter('the_time','time_ago');
+function time_ago(){
+    global $post ;
+    $to = time();
+    $from = get_comment_time('U') ;
+    $diff = (int) abs($to - $from);
+    if ($diff <= 3600) {
+        $mins = round($diff / 60);
+        if ($mins <= 1) {
+            $mins = 1;
+        }
+        $time = sprintf('%s 分钟前', $mins);
+    }
+    elseif (($diff <= 86400) && ($diff > 3600)) {
+        $hours = round($diff / 3600);
+        if ($hours <= 1) {
+            $hours = 1;
+        }
+        $time = sprintf('%s 小时前', $hours);
+    }
+    elseif ($diff >= 86400) {
+        $days = round($diff / 86400);
+        if ($days <= 1) {
+            $days = 1;
+            $time = sprintf('%s 天前', $days);
+        }
+        elseif( $days > 29){
+            $time = get_comment_time(get_option('date_format'));
+        }
+        else{
+            $time = sprintf('%s 天前', $days);
+        }
+    }
+    return $time;
+}

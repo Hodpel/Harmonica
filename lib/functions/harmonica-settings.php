@@ -33,7 +33,7 @@ function harmonica_settings() {
 <table class="form-table">
 <tr>
 	<th scope="row">是否自动开启夜间模式</th>
-	<td>
+	<td id="ifauto" >
 		<fieldset>
 			<p><label><input type="radio" name="IfAuto"  value="yes"  <?php if (get_option('IfAuto') == 'yes') echo "checked";?>>是</label></p>
 			<p><label><input type="radio" name="IfAuto" value="no" <?php if (get_option('IfAuto') == 'no') echo "checked";?>>否</label></p>
@@ -42,10 +42,10 @@ function harmonica_settings() {
 </tr>
 <tr>
 	<th scope="row">默认主题基础色调</th>
-	<td>
+	<td id="ifdark" >
 		<fieldset>
-			<p><label><input type="radio" name="IfDark"  value="yes"  <?php if (get_option('IfDark') == 'yes') echo "checked";?>>白</label></p>
-			<p><label><input type="radio" name="IfDark" value="no" <?php if (get_option('IfDark') == 'no') echo "checked";?>>黑</label></p>
+			<p><label><input type="radio" name="IfDark" value="yes" <?php if (get_option('IfDark') == 'yes') echo "checked";?>>黑</label></p>
+			<p><label><input type="radio" name="IfDark"  value="no"  <?php if (get_option('IfDark') == 'no') echo "checked";?>>白</label></p>
 		</fieldset>
 	</td>
 </tr>
@@ -94,6 +94,7 @@ function harmonica_settings() {
 	<td>
 		<fieldset>
 			<p><label><input type="text" name="donateqrcode" value="<?php echo get_option('donateqrcode'); ?>"></label></p>
+			<p class="tip">推荐大小:150*150px.</p>
 		</fieldset>
 	</td>
 </tr>
@@ -103,14 +104,25 @@ function harmonica_settings() {
 </div>
 <script type="text/javascript">
 	jQuery(document).ready(function($){
-		var section = $('#avatar'),
-			staticPage = section.find('input:radio[value="no"]'),
-			selects = section.find('input:text'),
+		var sectionavatar = $('#avatar'),
+			staticPage = sectionavatar.find('input:radio[value="no"]'),
+			selects = sectionavatar.find('input:text'),
 			check_disabled = function(){
 				selects.prop( 'disabled', ! staticPage.prop('checked') );
 			};
 		check_disabled();
- 		section.find('input:radio').change(check_disabled);
+ 		sectionavatar.find('input:radio').change(check_disabled);
+	});
+	jQuery(document).ready(function($){
+		var sectionifdark = $('#ifdark'),
+			  sectionifauto = $('#ifauto'),
+			staticPage = sectionifauto.find('input:radio[value="no"]'),
+			selects = sectionifdark.find('input:radio'),
+			check_disabled = function(){
+				selects.prop( 'disabled', ! staticPage.prop('checked') );
+			};
+		check_disabled();
+ 		sectionifauto.find('input:radio').change(check_disabled);
 	});
 </script>
 <?php
