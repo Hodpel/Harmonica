@@ -1,17 +1,7 @@
 <?php
-if ( has_header_image() ) {
-	$headerimg = get_header_image();
-	$image = sprintf( '<img src="%1$s" width="2000" height="1200" alt="%2$s">',$headerimg, esc_attr( $title ) );		
-}
-else {
-	$headerimg = get_theme_file_uri('/images/header.png');
-	$image = sprintf( '<img src="%1$s" width="2000" height="1200" alt="%2$s">',$headerimg, esc_attr( $title ) );			
-}
 /*<div class="header section" style="background-image: url(<?php if (get_header_image() != '') : ?><?php header_image(); ?><?php else : ?><?php echo get_template_directory_uri() . '/images/header.jpg'; ?><?php endif; ?>);">*/
 
-echo '<div class="site-image">';
-echo harmonica_apply_atomic( 'site_image', $image );
-echo '</div>';
+echo '<div class="site-image"></div>';
 
 echo '<div class="' . harmonica_apply_atomic( 'title_area_class', 'title-area') .'">';
 

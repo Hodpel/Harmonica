@@ -312,8 +312,9 @@ class harmonica {
 
 		/* Load the plugin Activation extension if supported. */
 		require_if_theme_supports( 'plugin-activation', trailingslashit( harmonica_EXTENSIONS ) . 'class-tgm-plugin-activation.php' );
+      
 	}
-
+	
 	/**
 	 * Load admin files for the framework.
 	 *
