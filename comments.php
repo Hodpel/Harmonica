@@ -60,12 +60,12 @@ if ( is_singular( 'page' ) &&  !get_theme_mod( 'page_comment' ) )
 	),
 );
 
-if ( comments_open() ) { echo '<div class="respond-container">'; }
+if ( comments_open() ) { echo '<div class="comment-place" id="comments"></div><div class="respond-container">'; }
 comment_form($comments_args);
 if ( comments_open() ) { echo '</div> <!-- /respond-container -->'; }
 
 ?>
-<div id="comments" class="entry-comments">
+<div class="entry-comments">
 	<?php get_template_part( 'partials/comments-loop' ); // Loads the comments-loop.php template. ?>
 </div><!-- #comments -->
 

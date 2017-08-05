@@ -12,7 +12,7 @@
 
 get_header(); ?>
 <main  class="<?php echo harmonica_apply_atomic( 'main_class', 'content' );?>" <?php harmonica_attr( 'content' ); ?>>
-	<header class="entry-header">	<h1 class="entry-title" itemprop="headline"><?php echo get_the_title(get_page($page_id)); ?></h1>
+	<header class="entry-header">	<h1 class="entry-title"><?php echo get_the_title(get_page($page_id)); ?></h1>
 </header>
 			<article id="post-<?php echo get_page_id(links); ?>" <?php post_class(); ?>>
 				<div class="entry-content">

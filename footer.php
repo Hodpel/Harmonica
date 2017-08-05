@@ -31,14 +31,8 @@
  
 </div>
 </div>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="<?php echo esc_url( get_template_directory_uri() ); ?>/lib/js/jquery.pjax.js"></script>
 <script>
-window['LocalConst'] = {
-	BASE_SCRIPT_URL: "<?php echo get_stylesheet_directory_uri() ?>",
-};
-LocalConst.SMILES_EMOJI_PATH = "<?php echo get_stylesheet_directory_uri() . '/images/smilies/' ?>";
-load();
 //banner
 	var getBgHeight = function(windowHeight, bannerHeight, mobileBannerHeight){
 		windowHeight = windowHeight || 560;
@@ -57,6 +51,11 @@ load();
 	var head = $(".site-header");
 	var bgHeight = getBgHeight(window.innerHeight, '65', '45');
 	head.css('height', bgHeight + "px");
+window['LocalConst'] = {
+	BASE_SCRIPT_URL: "<?php echo get_stylesheet_directory_uri() ?>",
+};
+LocalConst.SMILES_EMOJI_PATH = "<?php echo get_stylesheet_directory_uri() . '/images/smilies/' ?>";
+load();
 <?php
 if (get_option('IfPjax')=='yes') {
 	echo 'pjax();';
@@ -78,14 +77,19 @@ if (get_option('IfAuto')=='yes') {
 if (get_option('IfDark')=='yes') {
 					echo'$(".back-to-top").addClass("waves-light");';
 }
+if (is_home() || !has_post_thumbnail() ) {
 if ( has_header_image() ) {
 	$headerimg = get_header_image();
 }
 else {
-	$headerimg = get_theme_file_uri('/images/header.png');			
+	$headerimg = get_theme_file_uri('/images/header.jpg');			
+}
+} else {
+	$headerimg = the_post_thumbnail();
 }
 ?>
-$(".site-image").css('background','url("<?php echo $headerimg ?>")');
+var header = 'url(<?php echo $headerimg ?>)';
+$(".site-image").css('background',header);
 if (screen.width <= 1024) {
 	$(".back-to-top").removeClass("waves-effect");
 }
