@@ -438,3 +438,68 @@ function time_ago(){
     }
     return $time;
 }
+
+ /**
+ * Add article index
+ *
+ * @since Harmonica 1.0
+ */
+
+function article_index($content) {
+$matches = array();
+$ul_li = '';
+$ul = '';
+
+$r = '/<h([1-6]).*?\>(.*?)<\/h[1-6]>/is';
+
+if(is_single() && preg_match_all($r, $content, $matches)) {
+$count = count($matches[0]);
+foreach($matches[1] as $key => $value) {
+	if ($key <= 0) {
+		$ul_li = '<ul class="index-ul">'; 
+	}
+	else {
+		if ($value > $matches[1][$key - 1]) {
+			if ($value - $matches[1][$key - 1] == 1) {
+				$ul_li .= '<ul>'; 
+			}
+			elseif ($value == $matches[1][$key - 1]) {
+			}
+			else {
+				$ul_li .= '文章目录层级不合法';
+				return false;
+			}
+		}
+	}
+	$title = trim(strip_tags($matches[2][$key]));
+	$content = str_replace($matches[0][$key], '<h' . $value . ' id="title-' . $key . '">'.$title.'</h' . $value . '>', $content);
+	$ul_li .= '<li><a href="#title-'.$key.'" title="'.$title.'">'.$title."</a></li>\n";
+	if ($key < $count - 1) {
+		if ($value > $matches[1][$key + 1]) { 
+			$c = $value - $matches[1][$key + 1];
+			for ($i = 0; $i < $c; $i++) {
+				$ul .= '</ul>';
+				$ul_li .= $ul;
+				$ul = '';
+			}
+		}
+	} else {
+		$ul_li .= '</ul>';
+	}
+}
+
+$content = '<div class="index-button"><div class="article-index">
+<p class="title">文章目录</p>' . $ul_li . '</div></div>' . $content;
+}
+
+return $content;
+}
+
+add_filter( 'the_content', 'article_index' );
+
+ /**
+ * Add track
+ *
+ * @since Harmonica 1.0
+ */
+include_once(get_template_directory() . "/lib/widgets/track.php"); 
