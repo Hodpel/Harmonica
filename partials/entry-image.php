@@ -1,4 +1,5 @@
 <?php 		
+if (!is_page())
 	if( get_theme_mod( 'post_thumbnail', 1 ) && has_post_thumbnail()) {
 
 		if ( ! class_exists( 'Get_The_Image' ) ) {

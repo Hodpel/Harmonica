@@ -99,6 +99,9 @@ add_action( 'admin_enqueue_scripts', 'fontawesome_admin' );
 // Add theme widgets
 require_once (get_template_directory() . "/lib/widgets/recent-comments.php");
 require_once (get_template_directory() . "/lib/widgets/sidebar-links.php");
+if (get_option('IfQplayer')=='yes') {
+require_once (get_template_directory() . "/lib/widgets/Qplayer.php");
+}
 //Add waves
   function add_waves() {
         wp_register_style(
@@ -403,41 +406,41 @@ add_filter( 'comment_text' , 'harmonica_comment_add_at', 20, 2);
  * @since Harmonica 1.0
  */
  
-add_filter('the_time','time_ago');
-function time_ago(){
-    global $post ;
-    $to = time();
-    $from = get_comment_time('U') ;
-    $diff = (int) abs($to - $from);
-    if ($diff <= 3600) {
-        $mins = round($diff / 60);
-        if ($mins <= 1) {
-            $mins = 1;
-        }
-        $time = sprintf('%s 分钟前', $mins);
-    }
-    elseif (($diff <= 86400) && ($diff > 3600)) {
-        $hours = round($diff / 3600);
-        if ($hours <= 1) {
-            $hours = 1;
-        }
-        $time = sprintf('%s 小时前', $hours);
-    }
-    elseif ($diff >= 86400) {
-        $days = round($diff / 86400);
-        if ($days <= 1) {
-            $days = 1;
-            $time = sprintf('%s 天前', $days);
-        }
-        elseif( $days > 29){
-            $time = get_comment_time(get_option('date_format'));
-        }
-        else{
-            $time = sprintf('%s 天前', $days);
-        }
-    }
-    return $time;
+function Bing_filter_time(){
+	global $post ;
+	$to = time();
+	$from = get_the_time('U') ;
+	$diff = (int) abs($to - $from);
+	if ($diff <= 3600) {
+		$mins = round($diff / 60);
+		if ($mins <= 1) {
+			$mins = 1;
+		}
+		$time = sprintf(_n('%s 分钟', '%s 分钟', $mins), $mins) . __( '前' , 'Bing' );
+	}
+	else if (($diff <= 86400) && ($diff > 3600)) {
+		$hours = round($diff / 3600);
+		if ($hours <= 1) {
+			$hours = 1;
+		}
+		$time = sprintf(_n('%s 小时', '%s 小时', $hours), $hours) . __( '前' , 'Bing' );
+	}
+	elseif ($diff >= 86400) {
+		$days = round($diff / 86400);
+		if ($days <= 1) {
+			$days = 1;
+			$time = sprintf(_n('%s 天', '%s 天', $days), $days) . __( '前' , 'Bing' );
+		}
+		elseif( $days > 29){
+			$time = get_the_time(get_option('date_format'));
+		}
+		else{
+			$time = sprintf(_n('%s 天', '%s 天', $days), $days) . __( '前' , 'Bing' );
+		}
+	}
+	return $time;
 }
+add_filter('the_time','Bing_filter_time');
 
  /**
  * Add article index
@@ -488,8 +491,7 @@ foreach($matches[1] as $key => $value) {
 	}
 }
 
-$content = '<div class="index-button"><div class="article-index">
-<p class="title">文章目录</p>' . $ul_li . '</div></div>' . $content;
+$content = '<div class="article-index"><div class="index-button"></div><p class="title">文章目录</p>' . $ul_li . '</div>' . $content;
 }
 
 return $content;
@@ -498,8 +500,56 @@ return $content;
 add_filter( 'the_content', 'article_index' );
 
  /**
- * Add track
+ * Add tracks
  *
  * @since Harmonica 1.0
  */
-include_once(get_template_directory() . "/lib/widgets/track.php"); 
+  add_action('init', 'tracks');   
+function tracks()    
+{
+  $labels = array(   
+    'name' => '[迹]',   
+    'singular_name' => '一篇[迹]',   
+    'add_new' => '留下[迹]',   
+    'add_new_item' => '留下[迹]',   
+    'edit_item' => '重述',   
+    'new_item' => '崭新的[迹]',   
+    'view_item' => '回首[迹]',   
+    'search_items' => '搜寻[迹]',   
+    'not_found' =>  '找不到[迹]',   
+    'not_found_in_trash' => '找不到被遗弃的[迹]',    
+    'parent_item_colon' => '',   
+    'menu_name' => '[迹]'   
+  
+  );   
+  $args = array(   
+    'labels' => $labels,   
+    'public' => true,   
+    'publicly_queryable' => true,   
+    'show_ui' => true,    
+    'show_in_menu' => true,    
+    'query_var' => true,   
+    'rewrite' => true,   
+    'capability_type' => 'post',   
+    'has_archive' => true,    
+    'hierarchical' => false,   
+    'menu_position' => null,   
+    'supports' => array('title','editor','author')   
+  );    
+  register_post_type('tracks',$args);   
+};
+
+// This will occur when the comment is posted
+function plc_comment_post( $incoming_comment ) {
+// convert everything in a comment to display literally
+$incoming_comment['comment_content'] = htmlspecialchars($incoming_comment['comment_content']);
+// the one exception is single quotes, which cannot be #039; because WordPress marks it as spam
+$incoming_comment['comment_content'] = str_replace( "'", '&apos;', $incoming_comment['comment_content'] );
+return( $incoming_comment );
+}
+// This will occur before a comment is displayed
+function plc_comment_display( $comment_to_display ) {
+// Put the single quotes back in
+$comment_to_display = str_replace( '&apos;', "'", $comment_to_display );
+return $comment_to_display;
+}

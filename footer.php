@@ -37,6 +37,7 @@ window['LocalConst'] = {
 	BASE_SCRIPT_URL: "<?php echo get_stylesheet_directory_uri() ?>",
 };
 LocalConst.SMILES_EMOJI_PATH = "<?php echo get_stylesheet_directory_uri() . '/images/smilies/' ?>"; 
+IfDark = "<?php echo get_option('IfDark'); ?>";
 <?php
 if (is_home() || !has_post_thumbnail()) {
 	if (has_header_image()) {
@@ -69,13 +70,16 @@ if (get_option('IfAuto') == 'yes') {
 								}
 							});';
 }
-if (get_option('IfDark') == 'yes') {
-	echo '$(".back-to-top").addClass("waves-light");';
-} 
 ?>
+if (IfDark == 'yes') {
+	$(".back-to-top").addClass("waves-light");
+}
 if (screen.width <= 1024) {
 	$(".back-to-top").removeClass("waves-effect");
 }
+
+
+index_button_click();
 </script>
 </body>
 </html>
