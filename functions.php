@@ -553,3 +553,10 @@ function plc_comment_display( $comment_to_display ) {
 $comment_to_display = str_replace( '&apos;', "'", $comment_to_display );
 return $comment_to_display;
 }
+
+// 替换Gravatar为v2ex头像源
+function mytheme_get_avatar( $avatar ) {
+    $avatar = preg_replace("/http:\/\/(www|\d).gravatar.com\/avatar\//","http://cdn.v2ex.com/gravatar/",$avatar);
+    return $avatar;
+}
+add_filter('get_avatar', 'mytheme_get_avatar');

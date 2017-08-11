@@ -132,12 +132,9 @@ function harmonica_default_footer_insert( $settings ) {
 
 	/* If there is a child theme active, use [child-link] shortcode to the $footer_insert. */
 	if ( !is_child_theme() ) {
-		return '<p class="copyright">' . __( 'Copyright &#169; ', 'harmonica' ) . date_i18n( 'Y' ) . ' ' . get_bloginfo( 'name' ) . '.</p>' . "\n\n" . '<p class="credit">' . harmonica_get_theme_name() . __( ' WordPress Theme by ', 'harmonica' ) . harmonica_get_author_uri() . '</p>';		
-	} else {
-		return '<p class="copyright">' . __( 'Copyright &#169; ', 'harmonica' ) . date_i18n( 'Y' ) . ' ' . get_bloginfo( 'name' ) . '.</p>' . "\n\n" . '<p class="credit">' . harmonica_get_child_theme_link() . __( ' WordPress Theme by ', 'harmonica' ) . harmonica_get_author_uri() . '</p>';		
+		return '<p class="copyright">' . __( 'Copyright &#169; ', 'harmonica' ) . date_i18n( 'Y' ) . ' <a href="' . home_url() . '"> ' . get_bloginfo( 'name' ) . '-' . get_bloginfo( 'description' ) . '</a></p>' . "\n\n" . '<p class="credit">' . __( 'Theme ', 'harmonica' ) . harmonica_get_theme_name() . __( ' by ', 'harmonica' ) . harmonica_get_author_uri() . '</p>';		
 	}
 	
-
 }
 
 /**
@@ -167,7 +164,7 @@ function harmonica_get_primary_menu() {
  * print menu icon
  */
 function harmonica_menu_icon() {
-	echo '<a href="#" id="menu-icon" class="menu-icon"><i class="fa fa-bars" aria-hidden="true" style=""></i></a>';
+	echo '<a id="menu-icon" class="menu-icon"><i class="fa fa-bars" aria-hidden="true" style=""></i></a>';
 }
 
 /**
