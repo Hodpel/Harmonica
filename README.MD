@@ -8,11 +8,12 @@ Harmonica为一款Wordpress主题
 
 **详细介绍** [http://www.hodpel.ml/](http://www.hodpel.ml/)
 
-**GitHub** [https://github.com/Hodpel/Harmonicar](https://github.com/Hodpel/Harmonica)
+**GitHub** [https://github.com/Hodpel/Harmonica](https://github.com/Hodpel/Harmonica)
 
 ### 注意事项
 -----
-#### 关于API文件
+#### 友情链接格式为(类似与Markdown)
+`@@@大标题@@@[+标题+]{+地址+}(+头像地址(200X)+)`
 
 
 ### 待解决的问题
