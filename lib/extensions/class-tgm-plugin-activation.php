@@ -2520,7 +2520,6 @@ if ( ! class_exists( 'TGMPA_List_Table' ) ) {
                 $action_links[ $action ] = sprintf(
                     '<a href="%1$s">' . esc_html( $text ) . '</a>',
                     esc_url( $nonce_url ),
-                    '<span class="screen-reader-text">' . esc_html( $item['sanitized_plugin'] ) . '</span>'
                 );
             }
 

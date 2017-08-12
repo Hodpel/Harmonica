@@ -1,4 +1,17 @@
 <?php
+//添加拾色器
+add_action( 'admin_enqueue_scripts', 'wptuts_add_color_picker' );
+function wptuts_add_color_picker( $hook ) {
+ 
+    if( is_admin() ) { 
+ 
+        // 添加拾色器的CSS文件       
+        wp_enqueue_style( 'wp-color-picker' ); 
+ 
+        // 引用我们自定义的jQuery文件以及加入拾色器的支持
+        wp_enqueue_script( 'custom-script-handle', plugins_url( 'custom-script.js', __FILE__ ), array( 'wp-color-picker' ), false, true ); 
+    }
+}
  // 设置选项页
 function harmonica_menu()
 {
@@ -23,7 +36,6 @@ if ( !current_user_can( 'manage_options' ) )  {
 		update_option('donateqrcode', $_POST['donateqrcode']);
         update_option('autoPlay', $_POST['autoPlay']);
         update_option('rotate', $_POST['rotate']);
-        update_option('color', sanitize_text_field($_POST['color']));
         update_option('qcss', stripcslashes(sanitize_text_field($_POST['qcss'])));
         update_option('qjs', stripcslashes(sanitize_text_field($_POST['qjs'])));
         update_option('musicType', sanitize_text_field($_POST['musicType']));
@@ -93,7 +105,7 @@ function get_netease_music($id, $type = 'song'){
                 $list[$data['id']] = array(
                         'title' => $data['name'],
                         'artist' => $data['artists'][0]['name'],
-                        'location' => 'http://link.hhtjim.com/163/' . $data['id'] . '.mp3',
+                        'location' => 'http://music.163.com/song/media/outer/url?id=' . $data['id'] . '.mp3',
                         'pic' => $data['album']['blurPicUrl'].'?param=106x106'
                 );
             }
@@ -174,7 +186,7 @@ function harmonica_settings() {
 	<th scope="row">自定义主色调</th>
 	<td>
 		<fieldset>
-			<p><label><input type="text" name="theme_color" value="<?php echo get_option('theme_color'); ?>"></label></p>
+			<p><label><input class="theme_color" type="text" name="theme_color" value="<?php echo get_option('theme_color'); ?>"></label></p>
 			<p class="tip">默认为<span style="color: #8b84a3;">#8b84a3</span>.自定义主色调支持css的设置格式(#/rgb/rgba/hsl/hsla等),填写其他错误的格式可能不会生效.</p>
 		</fieldset>
 	</td>
@@ -206,15 +218,6 @@ function harmonica_settings() {
 		<fieldset>
 			<p><label><input type="radio" name="rotate" value="yes" <?php if (get_option('rotate') == 'yes') echo "checked";?>>是</label></p>
 			<p><label><input type="radio" name="rotate" value="no" <?php if (get_option('rotate') == 'no') echo "checked";?>>否</label></p>
-		</fieldset>
-	</td>
-</tr>
-<tr>
-	<th scope="row">播放器自定义主色调</th>
-	<td>
-		<fieldset>
-			<p><label><input type="text" name="color" value="<?php echo get_option('color'); ?>"></label></p>
-			<p class="tip">默认为<span style="color: #8b84a3;">#8b84a3</span>.自定义主色调支持css的设置格式(#/rgb/rgba/hsl/hsla等),填写其他错误的格式可能不会生效.</p>
 		</fieldset>
 	</td>
 </tr>
@@ -327,6 +330,14 @@ function harmonica_settings() {
 		check_disabled();
  		sectionifauto.find('input:radio').change(check_disabled);
 	});
+	(function( $ ) {
+	
+		// 添加颜色选择器到所有包含"color-field"类的 input 中
+		$(function() {
+			$('.theme_color').wpColorPicker();
+		});
+	
+	})( jQuery );
 </script>
 <?php
 }

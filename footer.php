@@ -31,26 +31,18 @@
  
 </div>
 </div>
-<script src="<?php echo esc_url( get_template_directory_uri() ); ?>/lib/js/jquery.pjax.js"></script>
+<!--script src="<?php echo esc_url( get_template_directory_uri() ); ?>/lib/js/jquery.pjax.js"></script-->
 <script>
 window['LocalConst'] = {
 	BASE_SCRIPT_URL: "<?php echo get_stylesheet_directory_uri() ?>",
 };
 LocalConst.SMILES_EMOJI_PATH = "<?php echo get_stylesheet_directory_uri() . '/images/smilies/' ?>"; 
 IfDark = "<?php echo get_option('IfDark'); ?>";
-<?php
-if (is_home() || !has_post_thumbnail()) {
-	if (has_header_image()) {
-		$headerimg = get_header_image();
-	} else {
-		$headerimg = get_theme_file_uri('/images/header.jpg');
-	}
-} else {
-	$headerimg = wp_get_attachment_image_src(get_post_thumbnail_id($post ->ID), 'full')[0];
-} 
-?>
-var header = 'url(<?php echo $headerimg ?>)';
-$(".site-image").css('background', header);
+var img = $(".site-image img");
+var header = 'url(' + img[0].src + ')';
+$(img[0]).remove();
+//var header = 'url(<?php echo $headerimg ?>)';
+$(".site-image").css('background-image', header);
 load(); 
 <?php
 if (get_option('IfPjax') == 'yes') {
@@ -77,8 +69,6 @@ if (IfDark == 'yes') {
 if (screen.width <= 1024) {
 	$(".back-to-top").removeClass("waves-effect");
 }
-
-
 index_button_click();
 </script>
 </body>

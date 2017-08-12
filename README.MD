@@ -1,6 +1,6 @@
-Harmonica V 0.0.1_alpha
+Harmonica V 0.0.2_alpha
 ========
-Harmonica为一款Wordpress主题
+>Harmonica为一款Wordpress主题
 
 ### 相关链接
 -----
@@ -18,7 +18,8 @@ Harmonica为一款Wordpress主题
 
 ### 待解决的问题
 -----
-- 背景无法自动切换;
+- 音频播放器与视频播放器样式比较难看...
+- 移动到相应文章目录无法点亮
 - 诸多未发现BUG
 
 ### 打赏
@@ -30,6 +31,12 @@ Harmonica为一款Wordpress主题
 
 ### 更新日志
 -----
+
+#### V0.0.2_alpha `2017/8/12`
+- 添加自定义主色调
+- 添加Qplayer播放器
+- 头部图片自动切换
+- 修复若干BUG
 
 #### V0.0.1_alpha `2017/8/11`
 - 添加友情链接
@@ -45,14 +52,14 @@ Harmonica为一款Wordpress主题
 
 ### 界面欣赏
 -----
-![]()
+![首页(白)](http://i1.bvimg.com/516706/d0abbd51fbff4a54.png)
 
-![]()
+![首页(黑)](http://i1.bvimg.com/516706/ad66969e0ee121a2.png)
 
-![]()
+![友情链接(白)](http://i1.bvimg.com/516706/2676c5ad3e42cd62.png)
 
-![]()
+![友情链接(黑)](http://i1.bvimg.com/516706/3e50307c805020c7.png)
 
-![]()
+![微语(白)](http://i1.bvimg.com/516706/b01c16984c592d1f.png)
 
-![]()
+![微语(黑)](http://i1.bvimg.com/516706/45a336a49f6f8816.png)

@@ -48,16 +48,6 @@ function footer(){
 		</div>
          ';
          
-    if(get_option('color') != '') {
-        echo '<style>
-        #pContent .ssBtn {
-            background-color:'.get_option('color').'!important;
-        }
-        #playlist li.playing, #playlist li:hover{
-            border-left-color:'.get_option('color').'!important;
-        }
-        </style>';
-    }
     if (get_option('qcss') != '') {
         echo '<style>'.get_option('qcss').'</style>' . "\n";
     }
