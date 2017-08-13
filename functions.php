@@ -420,7 +420,7 @@ add_filter( 'comment_text' , 'harmonica_comment_add_at', 20, 2);
  * @since Harmonica 1.0
  */
  
-function Bing_filter_time(){
+function Harmonica_filter_time(){
 	global $post ;
 	$to = time();
 	$from = get_the_time('U') ;
@@ -430,31 +430,31 @@ function Bing_filter_time(){
 		if ($mins <= 1) {
 			$mins = 1;
 		}
-		$time = sprintf(_n('%s 分钟', '%s 分钟', $mins), $mins) . __( '前' , 'Bing' );
+		$time = sprintf(_n('%s minute', '%s minutes', $mins), $mins) . __( ' ago' , 'Harmonica' );
 	}
 	else if (($diff <= 86400) && ($diff > 3600)) {
 		$hours = round($diff / 3600);
 		if ($hours <= 1) {
 			$hours = 1;
 		}
-		$time = sprintf(_n('%s 小时', '%s 小时', $hours), $hours) . __( '前' , 'Bing' );
+		$time = sprintf(_n('%s hour', '%s hours', $hours), $hours) . __( 'ago' , 'Harmonica' );
 	}
 	elseif ($diff >= 86400) {
 		$days = round($diff / 86400);
 		if ($days <= 1) {
 			$days = 1;
-			$time = sprintf(_n('%s 天', '%s 天', $days), $days) . __( '前' , 'Bing' );
+			$time = sprintf(_n('%s day', '%s days', $days), $days) . __( 'ago' , 'Harmonica' );
 		}
 		elseif( $days > 29){
 			$time = get_the_time(get_option('date_format'));
 		}
 		else{
-			$time = sprintf(_n('%s 天', '%s 天', $days), $days) . __( '前' , 'Bing' );
+			$time = sprintf(_n('%s day', '%s days', $days), $days) . __( 'ago' , 'Harmonica' );
 		}
 	}
 	return $time;
 }
-add_filter('the_time','Bing_filter_time');
+add_filter('the_time','Harmonica_filter_time');
 
  /**
  * Add article index

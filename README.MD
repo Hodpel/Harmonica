@@ -1,4 +1,4 @@
-Harmonica V 0.0.2_alpha
+Harmonica V 1.0.0
 ========
 >Harmonica为一款Wordpress主题
 
@@ -32,13 +32,11 @@ Harmonica V 0.0.2_alpha
 ### 更新日志
 -----
 
-#### V0.0.2_alpha `2017/8/12`
+#### V0.0.2_alpha `2017/8/13`
 - 添加自定义主色调
 - 添加Qplayer播放器
 - 头部图片自动切换
 - 修复若干BUG
-
-#### V0.0.1_alpha `2017/8/11`
 - 添加友情链接
 - 添加微语
 - 添加主题设置

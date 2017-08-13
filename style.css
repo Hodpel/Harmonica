@@ -4,7 +4,7 @@ Theme URI: http://www.hodpel.ml/harmonica
 Author: Hodpel
 Author URI: http://www.hodpel.ml
 Description: 一个简单而优雅的WordPress主题
-Version: Beta 0.0.1
+Version: 1.0.0
 License: GNU General Public License
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, right-sidebar, theme-options, custom-menu, threaded-comments, microformats, sticky-post, featured-image-header, flexible-header, translation-ready, featured-images, photography, blog
@@ -1679,7 +1679,7 @@ Media Queries
 
 	.harmonica-nav-menu {
 		overflow: auto;
-		height: 400px;
+		max-height: 400px;
 	}
 
 	.harmonica-nav-menu li {

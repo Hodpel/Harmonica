@@ -1,15 +1,7 @@
 <?php
 /**
- * The template for displaying all pages.
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site will use a
- * different template.
- *
- * @package harmonica
+ * The template is for Page Links
  */
-
 get_header(); ?>
 <main  class="<?php echo harmonica_apply_atomic( 'main_class', 'content' );?>" <?php harmonica_attr( 'content' ); ?>>
 	<header class="entry-header">	<h1 class="entry-title"><?php echo get_the_title(get_page($page_id)); ?></h1>
