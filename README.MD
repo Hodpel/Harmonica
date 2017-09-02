@@ -32,15 +32,19 @@ Harmonica V 1.0.0
 ### 更新日志
 -----
 
+#### V1.0.1 `2017/8/13`
+- [FIXED] 修复评论位置边框错误
+- [FIXED] 修复翻译代码错误
+
 #### V1.0.0 `2017/8/13`
-- 添加自定义主色调
-- 添加Qplayer播放器
-- 头部图片自动切换
-- 修复若干BUG
-- 添加友情链接
-- 添加微语
-- 添加主题设置
-- 添加夜间模式主题色
+- [NEW] 添加自定义主色调
+- [NEW] 添加Qplayer播放器
+- [NEW] 头部图片自动切换
+- [NEW] 添加友情链接
+- [NEW] 添加微语
+- [NEW] 添加主题设置
+- [NEW] 添加夜间模式主题色
+- [FIXED] 修复若干BUG
 
 ### 致谢
 -----
@@ -50,14 +54,14 @@ Harmonica V 1.0.0
 
 ### 界面欣赏
 -----
-![首页(白)](http://i1.bvimg.com/516706/d0abbd51fbff4a54.png)
+[首页(白)](http://i1.bvimg.com/516706/d0abbd51fbff4a54.png)
 
-![首页(黑)](http://i1.bvimg.com/516706/ad66969e0ee121a2.png)
+[首页(黑)](http://i1.bvimg.com/516706/ad66969e0ee121a2.png)
 
-![友情链接(白)](http://i1.bvimg.com/516706/2676c5ad3e42cd62.png)
+[友情链接(白)](http://i1.bvimg.com/516706/2676c5ad3e42cd62.png)
 
-![友情链接(黑)](http://i1.bvimg.com/516706/3e50307c805020c7.png)
+[友情链接(黑)](http://i1.bvimg.com/516706/3e50307c805020c7.png)
 
-![微语(白)](http://i1.bvimg.com/516706/b01c16984c592d1f.png)
+[微语(白)](http://i1.bvimg.com/516706/b01c16984c592d1f.png)
 
-![微语(黑)](http://i1.bvimg.com/516706/45a336a49f6f8816.png)
+[微语(黑)](http://i1.bvimg.com/516706/45a336a49f6f8816.png)
