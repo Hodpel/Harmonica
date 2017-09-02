@@ -1,4 +1,4 @@
-Harmonica V 1.0.0
+Harmonica V 1.0.1
 ========
 >Harmonica为一款Wordpress主题
 
