@@ -27,7 +27,7 @@ class harmonica_recent_comments extends WP_Widget {
 			
 		} 
 		else {
-			echo $before_title . __('Recent Comments') . $after_title;
+			echo $before_title . __('Recent Comments','harmonica') . $after_title;
 		}?>
 		
 			<ul class="harmonica-widget-list">

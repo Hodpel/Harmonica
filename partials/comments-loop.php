@@ -12,7 +12,6 @@
 	<?php the_comments_pagination( array(
 			'prev_text' =>  '',
 			'next_text' => '' ,
-			'before_page_number' => '',
 		)); ?>	
 <?php endif; // have_comments() ?>
 <?php get_template_part( 'partials/comments-loop-error' ); // Loads the comments-loop-error.php template. ?>

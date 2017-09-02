@@ -14,7 +14,7 @@ class harmonica_sidebar_links extends WP_Widget {
 		
 		$widget_title = null; 
 		
-		$widget_title = esc_attr(apply_filters(__( 'widget_title'), $cnstance[__('widget_title')]));
+		$widget_title = esc_attr(apply_filters(__( 'widget_title','harmonica'), $cnstance[__('widget_title','harmonica')]));
 		
 		echo $before_widget;
 		
@@ -22,7 +22,7 @@ class harmonica_sidebar_links extends WP_Widget {
 			echo $before_title . $widget_title . $after_title;
 		}
 		else {
-			echo $before_title . __('Links') . $after_title;
+			echo $before_title . __('Links','harmonica') . $after_title;
 		}
 			?>
 			<div class="harmonica-links">

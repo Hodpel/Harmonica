@@ -16,13 +16,13 @@ function wptuts_add_color_picker( $hook ) {
 function harmonica_menu()
 {
 // 在控制面板的侧边栏添加设置选项页链接
-add_theme_page(__('Harmonica Settings'), __('Harmonica Settings'), 'edit_themes', basename(__FILE__) , 'harmonica_settings');
+add_theme_page(__('Harmonica Settings','harmonica'), __('Harmonica Settings','harmonica'), 'edit_themes', basename(__FILE__) , 'harmonica_settings');
 }
 add_action('admin_menu','harmonica_menu');
 
 function harmonica_update() {
 if ( !current_user_can( 'manage_options' ) )  {
-        wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
+        wp_die( __( 'You do not have sufficient permissions to access this page.','harmonica' ) );
     } 
     if (isset($_POST['submit']) && $_SERVER['REQUEST_METHOD']=='POST'){
 		update_option('IfAuto', $_POST['IfAuto']);

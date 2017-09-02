@@ -59,7 +59,7 @@ if(!function_exists('fa_ajax_comment_callback')) :
 		<p><?php comment_text(); ?></p>
 	</div><!-- .comment-content -->
 	<div class="reply">
-		<i class="fa fa-reply" aria-hidden="true"></i><a itemprop="replyToUrl" rel="nofollow" class="comment-reply-link" href="reply" onclick="return addComment.moveForm( &quot;comment-232&quot;, &quot;232&quot;, &quot;respond&quot;, &quot;714&quot; )" aria-label="<?php  echo __('Reply')?>"><?php echo __('Reply')?></a>
+		<i class="fa fa-reply" aria-hidden="true"></i><a itemprop="replyToUrl" rel="nofollow" class="comment-reply-link" href="reply" onclick="return addComment.moveForm( &quot;comment-232&quot;, &quot;232&quot;, &quot;respond&quot;, &quot;714&quot; )" aria-label="<?php  echo __('Reply','harmonica')?>"><?php echo __('Reply','harmonica')?></a>
 	</div>
 </article>
 </li>
