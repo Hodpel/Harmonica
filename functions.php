@@ -419,42 +419,41 @@ add_filter( 'comment_text' , 'harmonica_comment_add_at', 20, 2);
  *
  * @since Harmonica 1.0
  */
- 
-function Harmonica_filter_time(){
+function Harmonica_comment_time(){
 	global $post ;
 	$to = time();
-	$from = get_the_time('U') ;
+	$from = get_comment_time('U') ;
 	$diff = (int) abs($to - $from);
 	if ($diff <= 3600) {
 		$mins = round($diff / 60);
 		if ($mins <= 1) {
 			$mins = 1;
 		}
-		$time = sprintf(_n('%s minute', '%s minutes', $mins , 'harmonica'), $mins) . __( ' ago' , 'harmonica' );
+		$time = sprintf(_n('%s minute', '%s minutes', $mins ), $mins) . __( ' ago' , 'harmonica' );
 	}
 	else if (($diff <= 86400) && ($diff > 3600)) {
 		$hours = round($diff / 3600);
 		if ($hours <= 1) {
 			$hours = 1;
 		}
-		$time = sprintf(_n('%s hour', '%s hours', $hours , 'harmonica'), $hours) . __( ' ago' , 'harmonica' );
+		$time = sprintf(_n('%s hour', '%s hours', $hours ), $hours) . __( ' ago' , 'harmonica' );
 	}
 	elseif ($diff >= 86400) {
 		$days = round($diff / 86400);
 		if ($days <= 1) {
 			$days = 1;
-			$time = sprintf(_n('%s day', '%s days', $days , 'harmonica'), $days) . __( ' ago' , 'harmonica' );
+			$time = sprintf(_n('%s day', '%s days', $days ), $days) . __( ' ago' , 'harmonica' );
 		}
 		elseif( $days > 29){
 			$time = get_the_time(get_option('date_format'));
 		}
 		else{
-			$time = sprintf(_n('%s day', '%s days', $days , 'harmonica'), $days) . __( 'ago' , 'harmonica' );
+			$time = sprintf(_n('%s day', '%s days', $days ), $days) . __( 'ago' , 'harmonica' );
 		}
 	}
 	return $time;
 }
-add_filter('the_time','Harmonica_filter_time');
+add_filter('the_time','Harmonica_comment_time');
 
  /**
  * Add article index

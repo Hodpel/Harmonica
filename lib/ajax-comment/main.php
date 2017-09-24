@@ -46,23 +46,24 @@ if(!function_exists('fa_ajax_comment_callback')) :
         do_action('set_comment_cookies', $comment, $user);
         $GLOBALS['comment'] = $comment;
         ?>
-<li class="comment even thread-odd thread-alt depth-1" id="comment-276">
-		<article class="comment-item" itemscope="itemscope" itemtype="http://schema.org/UserComments">
-	<p class="comment-author" itemprop="creator" itemscope="itemscope" itemtype="http://schema.org/Person">
-		<?php echo get_avatar( $comment, $size = '56')?>
-		<cite class="fn"><?php echo get_comment_author_link();?></cite>
-	</p>
-	<p class="comment-meta"> 
-		<time class="comment-published" datetime="<?php echo the_time(); ?>" title="<?php echo the_time(); ?>" itemprop="commentTime"><a href="comment-link"><?php echo the_time(); ?></a></time>
-	</p>
-	<div class="comment-content">
-		<p><?php comment_text(); ?></p>
-	</div><!-- .comment-content -->
-	<div class="reply">
-		<i class="fa fa-reply" aria-hidden="true"></i><a itemprop="replyToUrl" rel="nofollow" class="comment-reply-link" href="reply" onclick="return addComment.moveForm( &quot;comment-232&quot;, &quot;232&quot;, &quot;respond&quot;, &quot;714&quot; )" aria-label="<?php  echo __('Reply','harmonica')?>"><?php echo __('Reply','harmonica')?></a>
-	</div>
-</article>
-</li>
+<li <?php comment_class(); ?> id="comment-<?php comment_ID(); ?>">
+	<article <?php harmonica_attr( 'comment' ); ?>>
+		<p <?php harmonica_attr( 'comment-author' ); ?>>
+			<?php echo get_avatar( $comment, 48 ); ?>
+			<?php printf( __( '<cite class="fn">%s</cite>', 'harmonica' ), get_comment_author_link() ); ?>
+		</p>
+		<p class="comment-meta"> 
+			<time <?php harmonica_attr( 'comment-published' ); ?>><a href="<?php echo esc_url( get_comment_link( $comment->comment_ID ) ); ?>"><?php printf( __( '%1$s', 'harmonica' ), the_time() ); ?></a></time>
+			<?php edit_comment_link( __( '(Edit)', 'harmonica' ), '' ); ?>
+		</p>
+		<div class="comment-content">
+			<?php comment_text(); ?>
+		</div><!-- .comment-content -->
+		<div class="reply">
+			<?php comment_reply_link( array_merge( $args, array( 'depth' => $depth, 'max_depth' => $args['max_depth'] ) ) ); ?>
+		<a itemprop="replyToUrl" rel="nofollow" class="comment-reply-link" href="http://127.0.0.1/2017/09/03/hello-world/?replytocom=<?php echo get_comment_ID(); ?>#respond" onclick="return addComment.moveForm( &quot;comment-<?php echo get_comment_ID(); ?>&quot;, &quot;<?php echo get_comment_ID(); ?>&quot;, &quot;respond&quot;, &quot;1&quot; )"><i class="fa fa-reply" aria-hidden="true"></i><span> reply</span></a>
+		</div>
+		</article>	
         <?php die();
     }
 

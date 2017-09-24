@@ -1,16 +1,16 @@
 /*
 Theme Name: harmonica
-Theme URI: http://www.hodpel.ml/harmonica
+Theme URI: http://www.hodpel.top/harmonica
 Author: Hodpel
-Author URI: http://www.hodpel.ml
+Author URI: http://www.hodpel.top
 Description: 一个简单而优雅的WordPress主题
-Version: 1.0.0
+Version: 1.0.1
 License: GNU General Public License
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Tags: two-columns, right-sidebar, theme-options, custom-menu, threaded-comments, microformats, sticky-post, featured-image-header, flexible-header, translation-ready, featured-images, photography, blog
 Text Domain: harmonica
 
-harmonica WordPress theme, Copyright (C) 2017 Hodpel.ml
+harmonica WordPress theme, Copyright (C) 2017 Hodpel.top
 harmonica WordPress theme is licensed under the GPL.
 
 */
@@ -467,7 +467,7 @@ iframe {
 
 img {
 	height: auto;
-	width: auto\9;
+	width: auto;
  /* IE8 */
 }
 
@@ -1444,11 +1444,6 @@ ul.children .depth-2 {
 	margin-bottom: 24px;
 }
 
-li.comment {
-	border-right: none;
-	margin: 2px;
-}
-
 li.pingback {
 	border-right: none;
 	border: 2px solid;
@@ -1765,7 +1760,6 @@ Media Queries
 		visibility: hidden;
 		opacity: 0;
 		width: 100%;
-		background: #222;
 		top: 80px;
 		left: 0;
 	}
@@ -3385,6 +3379,7 @@ a,
 select,
 input,
 textarea,
+img,
 .alignnone,
 .wp-smiley,
 .OwO .OwO-body .OwO-bar .OwO-packages li,
@@ -3640,6 +3635,12 @@ body.theme-light #playlist.list-on {
 	border-color: #dedede;
 }
 
+@media only screen and (max-width: 1023px) {
+		body.theme-light ul.menu-primary {
+		background: #fff;
+	}
+}
+
 /*
 Theme Dark
 ---------------------------------------------------------------------------------------------------- */
@@ -3831,4 +3832,10 @@ body.theme-dark .track-content {
 
 body.theme-dark #playlist.list-on {
 	border-color: #5e5e5e;
+}
+
+@media only screen and (max-width: 1023px) {
+		body.theme-dark ul.menu-primary {
+		background: #222;
+	}
 }

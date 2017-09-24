@@ -2,7 +2,7 @@
 /*
  *Template Name: [迹]
  *author: Hodpel
- *url: http://www.hodpel.ml/tracks
+ *url: http://www.hodpel.top/tracks
 */
 
 get_header(); ?>
