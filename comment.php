@@ -23,7 +23,15 @@
 			<?php comment_text(); ?>
 		</div><!-- .comment-content -->
 		<div class="reply">
-			<?php comment_reply_link(  ); ?>
+			<?php  comment_reply_link(
+				array_merge( $args, 
+				array(
+					'reply_text' => '<i class="fa fa-reply" aria-hidden="true"></i><span> reply</span>',
+					'depth' => $depth, 
+					'max_depth' => $args['max_depth']
+					)
+				)
+			); ?>
 		</div>
 		<?php do_action( 'harmonica_harmonica_after_comment' );?>	
 	</article>	

@@ -67,17 +67,6 @@ function harmonica_theme_setup() {
 	/* Handle content width for embeds and images. */
 	harmonica_set_content_width( 700 );
 
-	/*Add menu*/
-function harmonica_setup_options() {
-	update_option('IfAuto', 'yes');
-	update_option('IfDark', 'no');
-	update_option('theme_color', '#8b84a3');
-	update_option('IfPjax', 'yes');
-	update_option('IfAvatar', 'yes');
-	update_option('IfGravatar', 'yes');
-	update_option('Avatarurl', '');
-	update_option('donateqrcode', '');
-}
 require (get_template_directory() . "/lib/functions/harmonica-settings.php");
 }
 

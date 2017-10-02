@@ -1043,7 +1043,8 @@ Content Area
 --------------------------------------------- */
 
 .entry {
-	margin-bottom: 50px;
+	padding: 30px 0 30px 0;
+	border-bottom: 1px dashed;
 }
 
 .entry .navigation a {
@@ -1409,7 +1410,7 @@ ol.comment-list {
 }
 
 .depth-2 .children {
-    margin-left: 0;
+	margin-left: 0;
 }
 
 ul.children .depth-2 {
@@ -1650,12 +1651,15 @@ Media Queries
 	}
 
 	.archive-description,
-	.entry,
 	.entry-comments,
 	.entry-footer .entry-meta,
 	.sidebar .widget,
 	#respond {
 		padding: 0;
+		top: 0;
+	}
+
+	.entry {
 		top: 0;
 	}
 
@@ -1914,6 +1918,10 @@ Widget
 	z-index: 0;
 	border-radius: 20px;
 	border: 1px solid;
+}
+
+.widget_tag_cloud .tagcloud {
+	display: inline-block;
 }
 
 .widget .tagcloud a:hover, .widget.widget_tag_cloud a:hover, .wp_widget_tag_cloud a:hover,
@@ -3491,6 +3499,7 @@ body.theme-light blockquote,
 body.theme-light input,
 body.theme-light select,
 body.theme-light textarea,
+body.theme-light .entry,
 body.theme-light .page-numbers,
 body.theme-light .comment-form .form-submit input[type="submit"],
 body.theme-light .comment .avatar,
@@ -3537,7 +3546,7 @@ body.theme-light .track-content  {
 	color: #444;
 }
 
-body.theme-light pre {
+body.theme-light pre:not([class*="language-"]) {
 	background: #F9F9F9;
 }
 
@@ -3669,11 +3678,15 @@ body.theme-dark .link-box a .thumb,
 body.theme-dark .track-avatar,
 body.theme-dark .loadingback,
 body.theme-dark #player,
-body.theme-dark #playlist  {
+body.theme-dark #playlist,
+body.theme-dark .OwO .OwO-body .OwO-items,
+body.theme-dark .OwO .OwO-body .OwO-bar {
 	background-color: #222;
 }
 
-fieldset {
+body.theme-dark fieldset,
+body.theme-dark .OwO-body,
+body.theme-dark .OwO .OwO-body .OwO-bar {
 	border-color: #5e5e5e;
 }
 
@@ -3681,7 +3694,10 @@ body.theme-dark blockquote,
 body.theme-dark .site-header,
 body.theme-dark .page-numbers:hover,
 body.theme-dark .track-main,
-body.theme-dark .menu-icon {
+body.theme-dark .menu-icon,
+body.theme-dark .OwO .OwO-body .OwO-item,
+body.theme-dark .OwO .OwO-body .OwO-bar .OwO-packages .OwO-package-active,
+body.theme-dark .OwO .OwO-body .OwO-items .OwO-item:hover {
 	background-color: #333;
 }
 
@@ -3690,6 +3706,7 @@ body.theme-dark blockquote,
 body.theme-dark input,
 body.theme-dark select,
 body.theme-dark textarea,
+body.theme-dark .entry,
 body.theme-dark .page-numbers,
 body.theme-dark .comment-form .form-submit input[type="submit"],
 body.theme-dark .comment .avatar,
@@ -3732,15 +3749,18 @@ body.theme-dark h3,
 body.theme-dark h4,
 body.theme-dark h5,
 body.theme-dark h6,
-body.theme-dark .track-content  {
+body.theme-dark .track-content,
+body.theme-dark .OwO .OwO-body .OwO-bar .OwO-packages .OwO-package-active  {
 	color: #aaa;
 }
 
-body.theme-dark pre {
+body.theme-dark pre:not([class*="language-"]),
+body.theme-dark .OwO .OwO-body .OwO-bar .OwO-packages li:hover {
 	background: #333;
 }
 
-body.theme-dark .site-title a {
+body.theme-dark .site-title a,
+body.theme-dark .OwO .OwO-body .OwO-bar .OwO-packages li {
 	color: #ccc;
 }
 
